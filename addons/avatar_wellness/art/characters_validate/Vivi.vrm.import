@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://i3dyye2sr3ti"
-path="res://.godot/imported/Vivi.vrm-3ecd2be1766d660cb1f5484d5f1feb45.scn"
+path="res://.godot/imported/Vivi.vrm-14eea98bb6c2b52613a3cebcf4730e8c.scn"
 
 [deps]
 
-source_file="res://addons/avatar_wellness/art/character_validate/Vivi.vrm"
-dest_files=["res://.godot/imported/Vivi.vrm-3ecd2be1766d660cb1f5484d5f1feb45.scn"]
+source_file="res://addons/avatar_wellness/art/characters_validate/Vivi.vrm"
+dest_files=["res://.godot/imported/Vivi.vrm-14eea98bb6c2b52613a3cebcf4730e8c.scn"]
 
 [params]
 
