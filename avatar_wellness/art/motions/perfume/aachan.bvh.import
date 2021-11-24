@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dhphnt8h6pb8"
-path="res://.godot/imported/aachan.bvh-e74cab25789d57b133ba262982eda35d.scn"
+path="res://.godot/imported/aachan.bvh-60f1bdb620f5bf5be5bd6199bba8b734.scn"
 
 [deps]
 
-source_file="res://hop_spin_dance/art/motions/perfume/aachan.bvh"
-dest_files=["res://.godot/imported/aachan.bvh-e74cab25789d57b133ba262982eda35d.scn"]
+source_file="res://avatar_wellness/art/motions/perfume/aachan.bvh"
+dest_files=["res://.godot/imported/aachan.bvh-60f1bdb620f5bf5be5bd6199bba8b734.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://867xtsl12adm"
-path="res://.godot/imported/kashiyuka.bvh-57e66c002c7f5fcb9001b576c16e04b2.scn"
+path="res://.godot/imported/kashiyuka.bvh-914d1bb12f77ebdf087d0edb7177a405.scn"
 
 [deps]
 
-source_file="res://hop_spin_dance/art/motions/perfume/kashiyuka.bvh"
-dest_files=["res://.godot/imported/kashiyuka.bvh-57e66c002c7f5fcb9001b576c16e04b2.scn"]
+source_file="res://avatar_wellness/art/motions/perfume/kashiyuka.bvh"
+dest_files=["res://.godot/imported/kashiyuka.bvh-914d1bb12f77ebdf087d0edb7177a405.scn"]
 
 [params]
 
