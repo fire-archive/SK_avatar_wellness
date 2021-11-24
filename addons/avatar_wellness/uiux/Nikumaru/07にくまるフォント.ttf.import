@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://dud38iryrej7i"
-path="res://.godot/imported/07にくまるフォント.ttf-5fac4fcd22aa8d04830b72ccc0494d4e.fontdata"
+path="res://.godot/imported/07にくまるフォント.ttf-b8a796222a385aeb9decb519b7b6fbca.fontdata"
 
 [deps]
 
-source_file="res://avatar_wellness/uiux/Nikumaru/07にくまるフォント.ttf"
-dest_files=["res://.godot/imported/07にくまるフォント.ttf-5fac4fcd22aa8d04830b72ccc0494d4e.fontdata"]
+source_file="res://addons/avatar_wellness/uiux/Nikumaru/07にくまるフォント.ttf"
+dest_files=["res://.godot/imported/07にくまるフォント.ttf-b8a796222a385aeb9decb519b7b6fbca.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://wsuk18k5ugq0"
-path="res://.godot/imported/B612-Regular.ttf-7512283b952778dd0b8e98cf9a920ef6.fontdata"
+path="res://.godot/imported/B612-Regular.ttf-e2a061b3e2d9f0c1116356df79f66af1.fontdata"
 
 [deps]
 
-source_file="res://avatar_wellness/uiux/B612/B612-Regular.ttf"
-dest_files=["res://.godot/imported/B612-Regular.ttf-7512283b952778dd0b8e98cf9a920ef6.fontdata"]
+source_file="res://addons/avatar_wellness/uiux/B612/B612-Regular.ttf"
+dest_files=["res://.godot/imported/B612-Regular.ttf-e2a061b3e2d9f0c1116356df79f66af1.fontdata"]
 
 [params]
 
