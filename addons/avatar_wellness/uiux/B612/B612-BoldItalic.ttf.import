@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://md1rbu5to8o4"
-path="res://.godot/imported/B612-BoldItalic.ttf-3e80f879738346c39507e989e9671533.fontdata"
+path="res://.godot/imported/B612-BoldItalic.ttf-197ce6b860988370751826bb3314672c.fontdata"
 
 [deps]
 
-source_file="res://avatar_wellness/uiux/B612/B612-BoldItalic.ttf"
-dest_files=["res://.godot/imported/B612-BoldItalic.ttf-3e80f879738346c39507e989e9671533.fontdata"]
+source_file="res://addons/avatar_wellness/uiux/B612/B612-BoldItalic.ttf"
+dest_files=["res://.godot/imported/B612-BoldItalic.ttf-197ce6b860988370751826bb3314672c.fontdata"]
 
 [params]
 
