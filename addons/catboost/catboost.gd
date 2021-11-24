@@ -44,7 +44,7 @@ static func bone_create():
 	var CATBOOST_KEYS = [
 		["Label", "Label", "VRM_BONE_NONE"],
 		["BONE", "Categ\tBONE", "BONE_NONE"], 
-		["BONE_CAPITALIZED", "Auxiliary\tBONE_CAPITALIZED", "BONE_NONE"],
+		["BONE_CAPITALIZED", "Text\tBONE_CAPITALIZED", "BONE_NONE"],
 		["SPECIFICATION_VERSION", "Auxiliary\tSPECIFICATION_VERSION", "VERSION_NONE"],
 	]
 	for key_i in MAX_HIERARCHY:
