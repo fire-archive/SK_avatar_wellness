@@ -6,7 +6,7 @@
 catboost fit --learn-set train.tsv --cv "Classical:0;5" --column-description train_description.txt --custom-loss="Precision,Recall" --logging-level Verbose --loss-function MultiClassOneVsAll --has-header --task-type GPU --od-pval 0.01 --model-format CatboostBinary
 
 # Probability of each class
-catboost calc -m model.bin --column-description test_description.txt --output-columns "LogProbability,BONE" --input-path test.tsv  --output-path output.tsv --has-header
+catboost calc -m model.bin --column-description test_description.txt --output-columns "LogProbability,BONE" --input-path test.tsv  --output-path stream://stdout --has-header
 ```
 
 1. Open in libreoffice calc. Create a pivot table with [BONE, LogProbability:bone].
