@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dfeynoyo7pbw4"
-path="res://.godot/imported/axes_decameter.glb-04a7b6e9a513daac21e7935acfe51912.scn"
+path="res://.godot/imported/axes_decameter.glb-89743646f30ace037cf3b0c86fb446bb.scn"
 
 [deps]
 
-source_file="res://hop_spin_dance/uiux/axes_indicator/axes_decameter.glb"
-dest_files=["res://.godot/imported/axes_decameter.glb-04a7b6e9a513daac21e7935acfe51912.scn"]
+source_file="res://avatar_wellness/uiux/axes_indicator/axes_decameter.glb"
+dest_files=["res://.godot/imported/axes_decameter.glb-89743646f30ace037cf3b0c86fb446bb.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bmsx6q1tjbce6"
-path="res://.godot/imported/nocchi.bvh-d7b40004bdaea1daacf94a9bea39eb06.scn"
+path="res://.godot/imported/nocchi.bvh-6f3fb880cd44fb48f3c3804f82437dfb.scn"
 
 [deps]
 
-source_file="res://hop_spin_dance/art/motions/perfume/nocchi.bvh"
-dest_files=["res://.godot/imported/nocchi.bvh-d7b40004bdaea1daacf94a9bea39eb06.scn"]
+source_file="res://avatar_wellness/art/motions/perfume/nocchi.bvh"
+dest_files=["res://.godot/imported/nocchi.bvh-6f3fb880cd44fb48f3c3804f82437dfb.scn"]
 
 [params]
 
