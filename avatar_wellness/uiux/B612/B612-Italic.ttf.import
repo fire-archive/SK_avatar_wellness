@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://eyi734rsc512"
-path="res://.godot/imported/B612-Italic.ttf-3eccaaf5cc3e8e0e56999ab1de22b52a.fontdata"
+path="res://.godot/imported/B612-Italic.ttf-f17822d9112d9715719df873d1887f1b.fontdata"
 
 [deps]
 
-source_file="res://hop_spin_dance/uiux/B612/B612-Italic.ttf"
-dest_files=["res://.godot/imported/B612-Italic.ttf-3eccaaf5cc3e8e0e56999ab1de22b52a.fontdata"]
+source_file="res://avatar_wellness/uiux/B612/B612-Italic.ttf"
+dest_files=["res://.godot/imported/B612-Italic.ttf-f17822d9112d9715719df873d1887f1b.fontdata"]
 
 [params]
 
