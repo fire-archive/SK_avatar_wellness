@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontData"
 uid="uid://tyjjj4lcdr54"
-path="res://.godot/imported/KosugiMaru-Regular.ttf-aee4d25576d75b31de61ded9f5a059a4.fontdata"
+path="res://.godot/imported/KosugiMaru-Regular.ttf-3e3fbcb5868b11401211aeedfd4c6983.fontdata"
 
 [deps]
 
-source_file="res://hop_spin_dance/uiux/Kosugi_Maru/KosugiMaru-Regular.ttf"
-dest_files=["res://.godot/imported/KosugiMaru-Regular.ttf-aee4d25576d75b31de61ded9f5a059a4.fontdata"]
+source_file="res://avatar_wellness/uiux/Kosugi_Maru/KosugiMaru-Regular.ttf"
+dest_files=["res://.godot/imported/KosugiMaru-Regular.ttf-3e3fbcb5868b11401211aeedfd4c6983.fontdata"]
 
 [params]
 
