@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/avatar_wellness/art/characters/SK_Adult_Male/v_sekai_adult-male.vrm" id="1_l8fyh"]
+
+
+[node name="v_sekai_adult-male" instance=ExtResource( "1_l8fyh" )]
+
+[node name="secondary" parent="." index="1"]
+spring_bones = []
+collider_groups = []
+
+[node name="anim" parent="." index="2"]
+blend_times = []
