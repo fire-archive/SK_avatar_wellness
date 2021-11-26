@@ -86,7 +86,7 @@ func _ready():
 					continue
 				elif improbability >= (tolerance * 0.4):
 					continue
-				if improbability > 2.0:
+				if improbability > 0.5:
 					uncertain_results.push_back([vrm_name,bone,  improbability])
 				else:
 					results.push_back([vrm_name,bone,  improbability])				
