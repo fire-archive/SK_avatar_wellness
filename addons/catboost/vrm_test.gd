@@ -67,26 +67,29 @@ func _ready():
 				bone.push_back([probability, column_name])
 				bones[bone_name] = bone
 	var seen : PackedStringArray
+	var result : Array
+	var non_results : Array
 	for bone in bones.keys():
 		var values = bones[bone]
 		values.sort_custom(sort_desc)
 		values.resize(10)
 		for value in values:
 			var vrm_name = value[1]
-			var improbability = value[0]
-			if vrm_name == "VRM_BONE_NONE" and improbability < 0.4:
+			var improbability = abs(value[0])
+			if vrm_name == bone:
 				break
-			elif vrm_name == bone:
+			elif seen.has(vrm_name) or seen.has(bone):
 				break
-			elif seen.has(vrm_name):
-				break
-			elif seen.has(bone):
-				break
-			elif not catboost.vrm_humanoid_bones.has(vrm_name):
-				continue
-			print("%s: raw score %s guessed %s" % [bone, improbability, vrm_name])
-			seen.push_back(vrm_name)
+			if vrm_name != "VRM_BONE_NONE":
+				result.push_back([bone, improbability, vrm_name])
+				seen.push_back(vrm_name)
+			else:				
+				non_results.push_back([bone, improbability, vrm_name])
 			seen.push_back(bone)
+	for res in result:
+		print("%s: improbability %s guessed %s" % res)
+	for res in non_results:
+		print("%s: improbability %s guessed %s" % res)
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
