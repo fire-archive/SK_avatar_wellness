@@ -74,7 +74,7 @@ func _ready():
 		for value in values:
 			var vrm_name = value[1]
 			var improbability = value[0]
-			if vrm_name == "VRM_BONE_NONE" and abs(improbability) <= 0.5:
+			if vrm_name == "VRM_BONE_NONE" and improbability < 0.4:
 				break
 			elif vrm_name == bone:
 				break
