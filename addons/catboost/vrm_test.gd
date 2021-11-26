@@ -30,9 +30,10 @@ var bones : Dictionary
 
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
-	catboost._write_import(self, true)
+	var write_path = "catboost/test.tsv"
+	catboost._write_import(self, true, write_path)
 	var stdout = [].duplicate()
-	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description catboost/test_description.txt --output-columns BONE,LogProbability --input-path catboost/test.tsv --output-path stream://stdout --has-header"], stdout)	
+	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description catboost/test_description.txt --output-columns BONE,LogProbability --input-path %s --output-path stream://stdout --has-header" % [write_path]], stdout)	
 	var bones : Dictionary
 	for elem_stdout in stdout:
 		var line = elem_stdout.split("\n")
@@ -58,15 +59,27 @@ func _ready():
 				var bone : Array
 				if bones.has(bone_name):
 					bone = bones[bone_name]
-				var probability = columns[c].pad_decimals(1).to_float()
+				var value = columns[c].pad_decimals(1).to_float()
+				if bone_name == "VRM_BONE_NONE" and value >= -0.5:
+					break
+				var probability = value
 				bone.push_back([probability, column_name])
 				bones[bone_name] = bone
 	for bone in bones.keys():
 		var values = bones[bone]
 		values.sort_custom(sort_desc)
-		values.resize(5)
+		values.resize(3)
+		var rank = 1
 		for value in values:
-			print("%s score %s : %s" % [bone, value[0], value[1]])
+			var bone_name = value[1]
+			if bone_name == "VRM_BONE_NONE" and value[0] >= -0.5:
+				break
+			elif bone_name == "VRM_BONE_NONE":
+				continue
+			elif value[0] <= -2.0:
+				continue
+			print("%s rank %s : raw score %s : %s" % [bone, rank, value[0], bone_name])
+			rank += 1
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null

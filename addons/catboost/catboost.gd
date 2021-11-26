@@ -140,7 +140,7 @@ static func _write_description(description, is_test):
 	file.store_string(file_string)
 	
 	
-static func _write_train(text, is_test):
+static func _write_train(text, is_test, test_path):
 	var do_path = "user://train.tsv"
 	var last_text = ""
 	if not is_test:
@@ -149,7 +149,7 @@ static func _write_train(text, is_test):
 		last_text = old_file.get_as_text()
 		old_file.close()
 	else:
-		do_path = "user://test.tsv"
+		do_path = test_path
 	var file = File.new()
 	file.open(do_path, File.WRITE)
 	file.store_string(last_text)
@@ -157,7 +157,7 @@ static func _write_train(text, is_test):
 		file.store_csv_line(t, "\t")
 	file.close()
 
-static func _write_import(scene, is_test):
+static func _write_import(scene, is_test, test_path):
 	var init_dict = bone_create()
 	_write_description(init_dict.description, is_test)
 	
@@ -347,7 +347,7 @@ static func _write_import(scene, is_test):
 		for i in child_count:
 			queue.push_back(node.get_child(i))
 		queue.pop_front()
-	_write_train(string_builder, is_test)
+	_write_train(string_builder, is_test, test_path)
 	return scene
 
 

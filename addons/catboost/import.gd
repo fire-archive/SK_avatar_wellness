@@ -25,8 +25,55 @@ extends EditorScenePostImport
 
 var catboost : RefCounted 
 
+const settings_catboost_path = "filesystem/import/vrm_catboost/catboost_path"
+
+var catboost_path : String
+
+func _init():
+	if not ProjectSettings.has_setting(settings_catboost_path):
+		ProjectSettings.set_initial_value(settings_catboost_path, "blender")
+		ProjectSettings.set_setting(settings_catboost_path, "blender")
+
+	else:
+		catboost_path = ProjectSettings.get_setting(settings_catboost_path)
+	var property_info = {
+		"name": settings_catboost_path,
+		"type": TYPE_STRING,
+		"hint": PROPERTY_HINT_GLOBAL_FILE,
+		"hint_string": ""
+	}
+	ProjectSettings.add_property_info(property_info)
+
 func _post_import(scene):
 	catboost = load("res://addons/catboost/catboost.gd").new()
 	catboost._write_import(scene, false)
+#	var node_script = GDScript.new()
+#	var code = """
+#extends Resource
+#
+#@export var bones: Dictionary
+#"""
+#	node_script.source_code = code
+#	scene.set_script(node_script)
+	
+	var stdout = [].duplicate()
+	var addon_path : String = catboost_path
+	var addon_path_global = ProjectSettings.globalize_path(addon_path)
+	var os_script : String = ("catboost")
+	var args = [
+		"calc -m model.bin --column-description test_description.txt --output-columns \"LogProbability,BONE\" --input-path test.tsv  --output-path stream://stdout --has-header",
+		os_script]
+	print(args)
+	var ret = OS.execute(addon_path_global, args, stdout, true)
+	for line in stdout:
+		print(line)
+	if ret != 0:
+		print("Catboost returned " + str(ret))
+		return null
+	
+#	var bones : Dictionary
+#	scene.bones = bones
 	return scene
+
+
 
