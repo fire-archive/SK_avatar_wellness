@@ -27,9 +27,12 @@ var catboost_path : String = "catboost"
 
 @export 
 var bones : Dictionary
+var neighbours : Array 
 
 func _ready():
+	var skeleton_neighbours_cache : Dictionary
 	var catboost = load("res://addons/catboost/catboost.gd").new()
+	neighbours = catboost.skeleton_neighbours(skeleton_neighbours_cache, self)[0]
 	var write_path = "catboost/test.tsv"
 	catboost._write_import(self, true, write_path)
 	var stdout = [].duplicate()
@@ -60,33 +63,35 @@ func _ready():
 				if bones.has(bone_name):
 					bone = bones[bone_name]
 				var value = columns[c].pad_decimals(1).to_float()
-				if bone_name == "VRM_BONE_NONE" and value >= -0.5:
-					break
 				var probability = value
 				bone.push_back([probability, column_name])
 				bones[bone_name] = bone
+	var seen : PackedStringArray
 	for bone in bones.keys():
 		var values = bones[bone]
 		values.sort_custom(sort_desc)
-		values.resize(3)
-		var rank = 1
+		values.resize(10)
 		for value in values:
-			var bone_name = value[1]
-			if bone_name == "VRM_BONE_NONE" and value[0] >= -0.5:
+			var vrm_name = value[1]
+			var improbability = value[0]
+			if vrm_name == "VRM_BONE_NONE" and abs(improbability) <= 0.5:
 				break
-			elif bone_name == "VRM_BONE_NONE":
+			elif vrm_name == bone:
+				break
+			elif seen.has(vrm_name):
+				break
+			elif seen.has(bone):
+				break
+			elif not catboost.vrm_humanoid_bones.has(vrm_name):
 				continue
-			elif value[0] <= -2.0:
-				continue
-			elif bone_name == bone:
-				continue
-			print("%s rank %s : raw score %s : %s" % [bone, rank, value[0], bone_name])
-			rank += 1
+			print("%s: raw score %s guessed %s" % [bone, improbability, vrm_name])
+			seen.push_back(vrm_name)
+			seen.push_back(bone)
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
 
 func sort_desc(a, b):
-	if a[0] >= b[0]:
+	if (neighbours.find(a[0]) > neighbours.find(b[0])) or a[0] > b[0]:
 		return true
 	return false
