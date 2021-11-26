@@ -98,10 +98,11 @@ func _ready():
 		return null
 	else:
 		print("## Results.")
-		print(results)
+		var json = JSON.new()
+		print(json.stringify(results))
 		print("Returned %d certain results" % [results.size()])
 		print("## Uncertain results.")
-		print(uncertain_results)
+		print(json.stringify(uncertain_results))
 		print("Returned %d uncertain results" % [uncertain_results.size()])
 
 func sort_desc(a, b):
