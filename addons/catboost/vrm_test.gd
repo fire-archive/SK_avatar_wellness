@@ -68,7 +68,6 @@ func _ready():
 				bones[bone_name] = bone
 	var seen : PackedStringArray
 	var result : Array
-	var non_results : Array
 	for bone in bones.keys():
 		var values = bones[bone]
 		values.sort_custom(sort_desc)
@@ -83,12 +82,8 @@ func _ready():
 			if vrm_name != "VRM_BONE_NONE":
 				result.push_back([bone, improbability, vrm_name])
 				seen.push_back(vrm_name)
-			else:				
-				non_results.push_back([bone, improbability, vrm_name])
 			seen.push_back(bone)
 	for res in result:
-		print("%s: improbability %s guessed %s" % res)
-	for res in non_results:
 		print("%s: improbability %s guessed %s" % res)
 	if ret != 0:
 		print("Catboost returned " + str(ret))
