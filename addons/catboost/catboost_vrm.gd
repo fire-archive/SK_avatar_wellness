@@ -72,7 +72,9 @@ func _ready():
 	var seen : PackedStringArray
 	var results : Dictionary
 	var uncertain_results : Dictionary
+	catboost.find_neighbor_joint
 	print("## Results.")
+	var count = 0
 	for tolerance in range(20):
 		for bone_name in bones.keys():
 			var values = bones[bone_name]
@@ -95,11 +97,12 @@ func _ready():
 					uncertain_results[bone_name] = uncertain_results
 				else:
 					results[bone_name] = [vrm_name, improbability]
-				seen.push_back(vrm_name)
+				seen.push_back(bone_name)
 				print([bone_name, vrm_name, improbability])
+				count += 1
 			for s in seen:
 				bones.erase(s)
-	
+	print("Returned results " + str(count))
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
