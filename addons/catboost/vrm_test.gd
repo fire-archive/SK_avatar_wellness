@@ -65,46 +65,48 @@ func _ready():
 				bone.push_back([probability, bone_name])
 				bones[column_name] = bone
 	var seen : PackedStringArray
-	var result : Array
+	var results : Array
 	var non_results : Array
-	for bone in bones.keys():
-		var values = bones[bone]
-		values.sort_custom(sort_desc)
-		values.resize(10)
-		for value in values:
-			var vrm_name = value[1]
-			var improbability = abs(value[0])
-			if vrm_name == bone:
-				break
-			elif seen.has(bone) or seen.has(vrm_name):
-				break
-			elif not catboost.vrm_humanoid_bones.has(bone):
-				continue
-			elif improbability > 2.0:
-				continue
-			result.push_back([bone, improbability, vrm_name])
-			seen.push_back(vrm_name)
-			seen.push_back(bone)
-	for bone in bones.keys():
-		var values = bones[bone]
-		values.sort_custom(sort_desc)
-		values.resize(3)
-		for value in values:
-			var vrm_name = value[1]
-			var improbability = abs(value[0])
-			if vrm_name == bone:
-				break
-			elif seen.has(bone) or seen.has(vrm_name):
-				continue
-			elif not catboost.vrm_humanoid_bones.has(bone):
-				continue
-			non_results.push_back([bone, improbability, vrm_name])
-			seen.push_back(vrm_name)
-			seen.push_back(bone)
+	for tolerance in range(5):
+		for bone in bones.keys():
+			bones.values().sort_custom(sort_desc)
+			var values = bones[bone]
+			for value in values:
+				var vrm_name = value[1]
+				var improbability = abs(value[0])
+				if vrm_name == bone:
+					break
+				elif seen.has(bone) or seen.has(vrm_name):
+					continue
+				elif not catboost.vrm_humanoid_bones.has(bone):
+					continue
+				elif improbability >= (tolerance * 0.4):
+					continue
+				results.push_back([bone, improbability, vrm_name])				
+				seen.push_back(vrm_name)
+				seen.push_back(bone)
+	for tolerance in range(20):
+		for bone in bones.keys():
+			bones.values().sort_custom(sort_desc)
+			var values = bones[bone]
+			for value in values:
+				var vrm_name = value[1]
+				var improbability = abs(value[0])
+				if vrm_name == bone:
+					break
+				elif seen.has(bone) or seen.has(vrm_name):
+					continue
+				elif not catboost.vrm_humanoid_bones.has(bone):
+					continue
+				elif improbability >= (tolerance * 0.4):
+					continue
+				non_results.push_back([bone, improbability, vrm_name])				
+				seen.push_back(vrm_name)
+				seen.push_back(bone)
 	print("## Certain results.")
-	for res in result:
+	for res in results:
 		print("%s: improbability %s guessed %s" % res)
-	print("Returned %d certain results" % [result.size()])
+	print("Returned %d certain results" % [results.size()])
 	print("## Uncertain results.")
 	for res in non_results:
 		print("%s: improbability %s guessed %s" % res)		
