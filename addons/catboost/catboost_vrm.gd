@@ -97,6 +97,8 @@ func _ready():
 					results[bone_name] = [vrm_name, improbability]
 				seen.push_back(vrm_name)
 				print([bone_name, vrm_name, improbability])
+			for s in seen:
+				bones.erase(s)
 	
 	if ret != 0:
 		print("Catboost returned " + str(ret))
