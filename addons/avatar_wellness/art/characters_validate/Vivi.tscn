@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8c4hmbhxjh0f"]
+
+[ext_resource type="PackedScene" uid="uid://ra0j5r3nbue7" path="res://addons/avatar_wellness/art/characters_validate/Vivi.vrm" id="1_u7vvy"]
+[ext_resource type="Script" path="res://addons/catboost/vrm_test.gd" id="2_juv1j"]
+
+[node name="Vivi" instance=ExtResource( "1_u7vvy" )]
+
+[node name="Skeleton3D" parent="." index="0"]
+bones/21/scale = Vector3(1, 1, 1)
+script = ExtResource( "2_juv1j" )
