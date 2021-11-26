@@ -74,7 +74,7 @@ func _ready():
 	catboost.find_neighbor_joint
 	print("## Results.")
 	var count = 0
-	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size()))
+	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size())) / 2.0
 	for tolerance in range(0, 40):
 		for bone_name in bones.keys():
 			var values = bones[bone_name]
