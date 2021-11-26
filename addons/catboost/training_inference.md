@@ -3,7 +3,7 @@
 ```bash
 # https://github.com/catboost/catboost/releases/tag/v1.0.3
 
-catboost fit --learn-set train.tsv --cv "Classical:0;5" --column-description train_description.txt --custom-loss="Precision,Recall" --logging-level Verbose --loss-function MultiClassOneVsAll --has-header --task-type GPU --od-pval 0.01 --model-format CatboostBinary
+catboost fit --learn-set train.tsv --cv "Classical:0;5" --column-description train_description.txt --loss-function MultiClassOneVsAll --has-header --task-type GPU --od-pval 0.01 --model-format CatboostBinary --auto-class-weights SqrtBalanced
 ```
 
 ## License

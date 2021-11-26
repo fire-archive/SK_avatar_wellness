@@ -72,6 +72,7 @@ func _ready():
 	var seen : PackedStringArray
 	var results : Dictionary
 	var uncertain_results : Dictionary
+	print("## Results.")
 	for tolerance in range(20):
 		for vrm_name in bones.keys():
 			var values = bones[vrm_name]
@@ -87,23 +88,19 @@ func _ready():
 				elif improbability >= (tolerance * 0.4):
 					continue
 				if improbability > 0.5:
-					uncertain_results[vrm_name] = bone
+					var bone_guesses : Array
+					if uncertain_results.has(bone):
+						bone_guesses = uncertain_results[vrm_name]
+					bone_guesses.push_back([bone, improbability])
+					uncertain_results[vrm_name] = uncertain_results
 				else:
-					results[vrm_name] = bone
-				seen.push_back(vrm_name)
+					results[vrm_name] = [bone, improbability]
 				seen.push_back(bone)
+				print([vrm_name, bone, improbability])
 	
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
-	else:
-		print("## Results.")
-		var json = JSON.new()
-		print(json.stringify(results))
-		print("Returned %d certain results" % [results.size()])
-		print("## Uncertain results.")
-		print(json.stringify(uncertain_results))
-		print("Returned %d uncertain results" % [uncertain_results.size()])
 
 func sort_desc(a, b):
 	if a[0] > b[0]:
