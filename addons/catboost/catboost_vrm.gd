@@ -70,8 +70,8 @@ func _ready():
 				bone.push_back([probability, bone_name])
 				bones[column_name] = bone
 	var seen : PackedStringArray
-	var results : Array
-	var uncertain_results : Array
+	var results : Dictionary
+	var uncertain_results : Dictionary
 	for tolerance in range(20):
 		for vrm_name in bones.keys():
 			var values = bones[vrm_name]
@@ -87,9 +87,9 @@ func _ready():
 				elif improbability >= (tolerance * 0.4):
 					continue
 				if improbability > 0.5:
-					uncertain_results.push_back([vrm_name,bone,  improbability])
+					uncertain_results[vrm_name] = bone
 				else:
-					results.push_back([vrm_name,bone,  improbability])				
+					results[vrm_name] = bone
 				seen.push_back(vrm_name)
 				seen.push_back(bone)
 	
@@ -98,12 +98,10 @@ func _ready():
 		return null
 	else:
 		print("## Results.")
-		for res in results:
-			print(res)
+		print(results)
 		print("Returned %d certain results" % [results.size()])
 		print("## Uncertain results.")
-		for res in uncertain_results:
-			print(res)
+		print(uncertain_results)
 		print("Returned %d uncertain results" % [uncertain_results.size()])
 
 func sort_desc(a, b):
