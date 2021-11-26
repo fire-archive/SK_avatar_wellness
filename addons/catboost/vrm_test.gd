@@ -78,6 +78,8 @@ func _ready():
 				continue
 			elif value[0] <= -2.0:
 				continue
+			elif bone_name == bone:
+				continue
 			print("%s rank %s : raw score %s : %s" % [bone, rank, value[0], bone_name])
 			rank += 1
 	if ret != 0:
