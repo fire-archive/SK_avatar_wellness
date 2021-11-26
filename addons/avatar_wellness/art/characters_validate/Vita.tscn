@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://rm8jlyq5adft"]
+[gd_scene load_steps=3 format=3 uid="uid://cjqb83wqv0868"]
 
-[ext_resource type="PackedScene" uid="uid://dxbn7155gvuub" path="res://addons/avatar_wellness/art/characters_validate/Vita.vrm" id="1_ibwud"]
-[ext_resource type="Script" path="res://addons/catboost/vrm_test.gd" id="2_t8wrw"]
+[ext_resource type="PackedScene" path="res://addons/avatar_wellness/art/characters_validate/Vita.vrm" id="1_ibwud"]
+[ext_resource type="Script" path="res://addons/catboost/catboost_vrm.gd" id="2_t8wrw"]
 
 [node name="Vita" instance=ExtResource( "1_ibwud" )]
 script = null

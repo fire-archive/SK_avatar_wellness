@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://byal61dgj6gdo"]
+[gd_scene load_steps=3 format=3 uid="uid://7flb0867tyir"]
 
-[ext_resource type="PackedScene" uid="uid://cfewmmfeur0lb" path="res://addons/avatar_wellness/art/characters/SK_Magic_Girl/SK_Magic_Girl_51.vrm" id="1_3op1u"]
-[ext_resource type="Script" path="res://addons/catboost/vrm_test.gd" id="2_efym7"]
+[ext_resource type="PackedScene" path="res://addons/avatar_wellness/art/characters/SK_Magic_Girl/SK_Magic_Girl_51.vrm" id="1_3op1u"]
+[ext_resource type="Script" path="res://addons/catboost/catboost_vrm.gd" id="2_efym7"]
 
 [node name="SK_Magic_Girl_51" instance=ExtResource( "1_3op1u" )]
 
