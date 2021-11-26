@@ -73,29 +73,29 @@ func _ready():
 	var results : Array
 	var non_results : Array
 	for tolerance in range(5):
-		for bone in bones.keys():
+		for vrm_name in bones.keys():
 			bones.values().sort_custom(sort_desc)
-			var values = bones[bone]
+			var values = bones[vrm_name]
 			for value in values:
-				var vrm_name = value[1]
+				var bone = value[1]
 				var improbability = abs(value[0])
-				if vrm_name == bone:
+				if bone == vrm_name:
 					break
-				elif seen.has(bone) or seen.has(vrm_name):
+				elif seen.has(vrm_name) or seen.has(bone):
 					continue
-				elif not catboost.vrm_humanoid_bones.has(bone):
+				elif not catboost.vrm_humanoid_bones.has(vrm_name):
 					continue
 				elif improbability >= (tolerance * 0.4):
 					continue
-				results.push_back([improbability, bone,  vrm_name])				
+				results.push_back([vrm_name,bone,  improbability])				
 				seen.push_back(vrm_name)
 				seen.push_back(bone)
 	for tolerance in range(20):
-		for bone in bones.keys():
+		for vrm_name in bones.keys():
 			bones.values().sort_custom(sort_desc)
-			var values = bones[bone]
+			var values = bones[vrm_name]
 			for value in values:
-				var vrm_name = value[1]
+				var bone = value[1]
 				var improbability = abs(value[0])
 				if vrm_name == bone:
 					break
@@ -105,7 +105,7 @@ func _ready():
 					continue
 				elif improbability >= (tolerance * 0.4):
 					continue
-				non_results.push_back([improbability, bone,  vrm_name])				
+				non_results.push_back([vrm_name,bone,improbability])				
 				seen.push_back(vrm_name)
 				seen.push_back(bone)
 	
