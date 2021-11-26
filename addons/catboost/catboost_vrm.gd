@@ -105,7 +105,7 @@ func _ready():
 		print("## Uncertain results.")
 		for res in uncertain_results:
 			print(res)
-		print("Returned %d uncertain results" % [results.size()])
+		print("Returned %d uncertain results" % [uncertain_results.size()])
 
 func sort_desc(a, b):
 	if a[0] > b[0]:
