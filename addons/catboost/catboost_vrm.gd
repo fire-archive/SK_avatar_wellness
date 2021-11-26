@@ -34,7 +34,7 @@ func _ready():
 	var write_path_global = ProjectSettings.globalize_path("user://" + scene_path.get_file().get_basename() + "-" + scene_path.md5_text() + ".tsv")
 	var description_path_global = ProjectSettings.globalize_path("res://addons/catboost/model/train_description.txt")
 	var model_global = ProjectSettings.globalize_path("res://addons/catboost/model/vrm_model_2021-11-26.bin")
-	var catboost_global =  ProjectSettings.globalize_path("res://addons/catboost/catboost-1.0.3.exe")
+	var catboost_global =  ProjectSettings.globalize_path("catboost")
 	catboost._write_import(self, true, write_path_global)
 	var stdout = [].duplicate()
 	var args = [catboost_global, model_global, description_path_global, write_path_global]
