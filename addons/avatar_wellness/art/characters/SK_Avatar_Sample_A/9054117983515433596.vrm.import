@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d3nepc62v0v8g"
-path="res://.godot/imported/9054117983515433596.vrm-6481f7c0c7c37225b18f1cab0f121c81.scn"
+path="res://.godot/imported/9054117983515433596.vrm-0c9f832d47beb7b14e8ba4e6e40106ad.scn"
 
 [deps]
 
-source_file="res://addons/avatar_wellness/art/characters/SK_AvatarSample_A/9054117983515433596.vrm"
-dest_files=["res://.godot/imported/9054117983515433596.vrm-6481f7c0c7c37225b18f1cab0f121c81.scn"]
+source_file="res://addons/avatar_wellness/art/characters/SK_Avatar_Sample_A/9054117983515433596.vrm"
+dest_files=["res://.godot/imported/9054117983515433596.vrm-0c9f832d47beb7b14e8ba4e6e40106ad.scn"]
 
 [params]
 
