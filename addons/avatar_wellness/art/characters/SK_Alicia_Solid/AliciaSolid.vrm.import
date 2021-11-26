@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ddf1cjqlwdu44"
-path="res://.godot/imported/AliciaSolid.vrm-bde9dec3abb74bbd5c8143c739cf46bf.scn"
+path="res://.godot/imported/AliciaSolid.vrm-2cb0c5358caec5e20d0b726cf4e7ae15.scn"
 
 [deps]
 
-source_file="res://addons/avatar_wellness/art/characters/mmd/AliciaSolid.vrm"
-dest_files=["res://.godot/imported/AliciaSolid.vrm-bde9dec3abb74bbd5c8143c739cf46bf.scn"]
+source_file="res://addons/avatar_wellness/art/characters/SK_Alicia_Solid/AliciaSolid.vrm"
+dest_files=["res://.godot/imported/AliciaSolid.vrm-2cb0c5358caec5e20d0b726cf4e7ae15.scn"]
 
 [params]
 
