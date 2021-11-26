@@ -74,29 +74,29 @@ func _ready():
 	var uncertain_results : Dictionary
 	print("## Results.")
 	for tolerance in range(20):
-		for vrm_name in bones.keys():
-			var values = bones[vrm_name]
+		for bone_name in bones.keys():
+			var values = bones[bone_name]
 			for value in values:
-				var bone = value[1]
+				var vrm_name = value[1]
 				var improbability = abs(value[0])
-				if bone == vrm_name:
+				if vrm_name == bone_name:
 					break
-				elif seen.has(vrm_name) or seen.has(bone):
+				elif seen.has(bone_name) or seen.has(vrm_name):
 					continue
-				elif not catboost.vrm_humanoid_bones.has(vrm_name):
+				elif not catboost.vrm_humanoid_bones.has(bone_name):
 					continue
 				elif improbability >= (tolerance * 0.4):
 					continue
 				if improbability > 0.5:
 					var bone_guesses : Array
-					if uncertain_results.has(bone):
-						bone_guesses = uncertain_results[vrm_name]
-					bone_guesses.push_back([bone, improbability])
-					uncertain_results[vrm_name] = uncertain_results
+					if uncertain_results.has(vrm_name):
+						bone_guesses = uncertain_results[bone_name]
+					bone_guesses.push_back([vrm_name, improbability])
+					uncertain_results[bone_name] = uncertain_results
 				else:
-					results[vrm_name] = [bone, improbability]
-				seen.push_back(bone)
-				print([vrm_name, bone, improbability])
+					results[bone_name] = [vrm_name, improbability]
+				seen.push_back(vrm_name)
+				print([bone_name, vrm_name, improbability])
 	
 	if ret != 0:
 		print("Catboost returned " + str(ret))
