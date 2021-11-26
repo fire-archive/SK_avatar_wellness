@@ -80,6 +80,7 @@ func _ready():
 			var values = bones[bone_name]
 			for value in values:
 				var vrm_name = value[1]
+				var probability = value[0]
 				var improbability = abs(value[0])
 				if vrm_name == bone_name:
 					break
@@ -93,12 +94,12 @@ func _ready():
 					var bone_guesses : Array
 					if uncertain_results.has(vrm_name):
 						bone_guesses = uncertain_results[bone_name]
-					bone_guesses.push_back([vrm_name, improbability])
+					bone_guesses.push_back([vrm_name, probability])
 					uncertain_results[bone_name] = uncertain_results
 				else:
-					results[bone_name] = [vrm_name, improbability]
+					results[bone_name] = [vrm_name, probability]
 				seen.push_back(bone_name)
-				print([bone_name, vrm_name, improbability])
+				print([bone_name, vrm_name, probability])
 				count += 1
 			for s in seen:
 				bones.erase(s)
