@@ -85,6 +85,7 @@ func _ready():
 			seen.push_back(bone)
 	for res in result:
 		print("%s: improbability %s guessed %s" % res)
+	print("Returned %s results" % result.size())
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
