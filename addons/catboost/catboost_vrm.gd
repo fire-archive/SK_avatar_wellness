@@ -71,8 +71,8 @@ func _ready():
 				bones[column_name] = bone
 	var seen : PackedStringArray
 	var results : Array
-	var non_results : Array
-	for tolerance in range(5):
+	var uncertain_results : Array
+	for tolerance in range(20):
 		for vrm_name in bones.keys():
 			bones.values().sort_custom(sort_desc)
 			var values = bones[vrm_name]
@@ -87,25 +87,10 @@ func _ready():
 					continue
 				elif improbability >= (tolerance * 0.4):
 					continue
-				results.push_back([vrm_name,bone,  improbability])				
-				seen.push_back(vrm_name)
-				seen.push_back(bone)
-	for tolerance in range(20):
-		for vrm_name in bones.keys():
-			bones.values().sort_custom(sort_desc)
-			var values = bones[vrm_name]
-			for value in values:
-				var bone = value[1]
-				var improbability = abs(value[0])
-				if vrm_name == bone:
-					break
-				elif seen.has(bone) or seen.has(vrm_name):
-					continue
-				elif not catboost.vrm_humanoid_bones.has(bone):
-					continue
-				elif improbability >= (tolerance * 0.4):
-					continue
-				non_results.push_back([vrm_name,bone,improbability])				
+				if improbability > 2.0:
+					uncertain_results.push_back([vrm_name,bone,  improbability])
+				else:
+					results.push_back([vrm_name,bone,  improbability])				
 				seen.push_back(vrm_name)
 				seen.push_back(bone)
 	
@@ -113,14 +98,14 @@ func _ready():
 		print("Catboost returned " + str(ret))
 		return null
 	else:
-		print("## Certain results.")
+		print("## Results.")
 		for res in results:
 			print(res)
 		print("Returned %d certain results" % [results.size()])
 		print("## Uncertain results.")
-		for res in non_results:
-			print(res)		
-		print("Returned %d uncertain results" % [non_results.size()])
+		for res in uncertain_results:
+			print(res)
+		print("Returned %d uncertain results" % [results.size()])
 
 func sort_desc(a, b):
 	if a[0] > b[0]:
