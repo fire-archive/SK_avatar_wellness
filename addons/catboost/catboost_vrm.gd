@@ -98,6 +98,7 @@ func _ready():
 					uncertain_results[bone_name] = uncertain_results
 				else:
 					results[bone_name] = [vrm_name, probability]
+				seen.push_back(vrm_name)
 				seen.push_back(bone_name)
 				print([bone_name, vrm_name, probability])
 				count += 1
