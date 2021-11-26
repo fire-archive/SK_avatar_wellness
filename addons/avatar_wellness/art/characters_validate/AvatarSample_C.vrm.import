@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cug7kaw7bsjtx"
+uid="uid://b4li3wydky4uk"
 path="res://.godot/imported/AvatarSample_C.vrm-26ce1adf20fa7ef5c922b578191cfed8.scn"
 
 [deps]
@@ -24,6 +24,6 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-import_script/path="res://addons/catboost/test.gd"
+import_script/path=""
 _subresources={
 }
