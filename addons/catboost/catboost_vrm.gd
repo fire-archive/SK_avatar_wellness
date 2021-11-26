@@ -71,11 +71,11 @@ func _ready():
 				bones[column_name] = bone
 	var seen : PackedStringArray
 	var results : Dictionary
-	var uncertain_results : Dictionary
 	catboost.find_neighbor_joint
 	print("## Results.")
 	var count = 0
-	for tolerance in range(0, 100):
+	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size()))
+	for tolerance in range(0, 40):
 		for bone_name in bones.keys():
 			var values = bones[bone_name]
 			for value in values:
@@ -90,17 +90,11 @@ func _ready():
 					continue
 				elif improbability >= (tolerance * 0.1):
 					continue
-				if improbability > 0.5:
-					var bone_guesses : Array
-					if uncertain_results.has(vrm_name):
-						bone_guesses = uncertain_results[bone_name]
-					bone_guesses.push_back([vrm_name, probability])
-					uncertain_results[bone_name] = uncertain_results
-				else:
+				if improbability <= abs_log_probability_of_bone:
 					results[bone_name] = [vrm_name, probability]
+					print([bone_name, vrm_name, probability])
 				seen.push_back(vrm_name)
 				seen.push_back(bone_name)
-				print([bone_name, vrm_name, probability])
 				count += 1
 			for s in seen:
 				bones.erase(s)
