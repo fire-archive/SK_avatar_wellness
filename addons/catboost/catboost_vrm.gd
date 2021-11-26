@@ -30,10 +30,11 @@ var bones : Dictionary
 
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
-	var write_path = "catboost/test.tsv"
-	catboost._write_import(self, true, write_path)
+	var write_path_global = ProjectSettings.globalize_path("catboost/test.tsv")
+	var description_path_global = ProjectSettings.globalize_path("catboost/test_description.txt")
+	catboost._write_import(self, true, write_path_global)
 	var stdout = [].duplicate()
-	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description catboost/test_description.txt --output-columns BONE,LogProbability --input-path %s --output-path stream://stdout --has-header" % [write_path]], stdout)	
+	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description %s --output-columns BONE,LogProbability --input-path %s --output-path stream://stdout --has-header" % [description_path_global, write_path_global]], stdout)	
 	var bones : Dictionary
 	for elem_stdout in stdout:
 		var line : PackedStringArray = elem_stdout.split("\n")
