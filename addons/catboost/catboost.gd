@@ -19,7 +19,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-@tool
 extends RefCounted
 
 const vrm_humanoid_bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg","rightLowerLeg","leftFoot","rightFoot",
@@ -49,7 +48,7 @@ static func bone_create():
 	]
 	for key_i in MAX_HIERARCHY:
 		var label = "BONE_HIERARCHY_" + str(key_i).pad_zeros(3)
-		CATBOOST_KEYS.push_back([label, "Categ\t" + label, "BONE_NONE"])
+		CATBOOST_KEYS.push_back([label, "Text\t" + label, "BONE_NONE"])
 	for key_i in CATBOOST_KEYS.size():
 		category_description.push_back(str(category_description.size()) + "\t" + CATBOOST_KEYS[key_i][1])
 		bone_category[CATBOOST_KEYS[key_i][0]] = CATBOOST_KEYS[key_i][2]
@@ -145,7 +144,7 @@ static func _write_train(text, is_test, test_path):
 	var last_text = ""
 	if not is_test:
 		var old_file = File.new()
-		old_file.open(do_path, File.READ_WRITE)
+		old_file.open(do_path, File.WRITE_READ)
 		last_text = old_file.get_as_text()
 		old_file.close()
 	else:
