@@ -336,7 +336,6 @@ static func _write_import(scene, is_test, test_path):
 					if elem_i >= MAX_HIERARCHY:
 						break
 					bone["BONE_HIERARCHY_" + str(elem_i).pad_zeros(3)] = skeleton.get_bone_name(neighbours[bone_i][elem_i])
-				var parent_bone = skeleton.get_bone_name(bone_parent)
 				if vrm_extension.get("vrm_meta"):
 					var version = vrm_extension["vrm_meta"].get("specVersion")
 					if version == null or version.is_empty():
