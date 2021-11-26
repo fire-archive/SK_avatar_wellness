@@ -27,32 +27,30 @@ var catboost_path : String = "catboost"
 
 @export 
 var bones : Dictionary
-var neighbours : Array 
 
 func _ready():
-	var skeleton_neighbours_cache : Dictionary
 	var catboost = load("res://addons/catboost/catboost.gd").new()
-	neighbours = catboost.skeleton_neighbours(skeleton_neighbours_cache, self)[0]
 	var write_path = "catboost/test.tsv"
 	catboost._write_import(self, true, write_path)
 	var stdout = [].duplicate()
 	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description catboost/test_description.txt --output-columns BONE,LogProbability --input-path %s --output-path stream://stdout --has-header" % [write_path]], stdout)	
 	var bones : Dictionary
 	for elem_stdout in stdout:
-		var line = elem_stdout.split("\n")
+		var line : PackedStringArray = elem_stdout.split("\n")
 		var keys : PackedStringArray
+		var columns_first = line[0].split("\t")
+		keys.resize(columns_first.size())
+		for c in columns_first.size():					
+			var key_name = columns_first[c]
+			var split = key_name.split("=", true, 1)
+			if split.size() == 1:
+				keys[c] = split[0]
+			else:
+				keys[c] = split[1]
+		line.remove_at(0)
+		line.reverse()
 		for i in line.size():
 			var columns = line[i].split("\t")
-			if i == 0:
-				keys.resize(columns.size())
-				for c in columns.size():					
-					var key_name = columns[c]
-					var split = key_name.split("=", true, 1)
-					if split.size() == 1:
-						keys[c] = split[0]
-					else:
-						keys[c] = split[1]
-				continue
 			var bone_name : String
 			for c in columns.size():
 				if c == 0:
@@ -60,14 +58,15 @@ func _ready():
 					continue
 				var column_name : String = keys[c]
 				var bone : Array
-				if bones.has(bone_name):
-					bone = bones[bone_name]
+				if bones.has(column_name):
+					bone = bones[column_name]
 				var value = columns[c].pad_decimals(1).to_float()
 				var probability = value
-				bone.push_back([probability, column_name])
-				bones[bone_name] = bone
+				bone.push_back([probability, bone_name])
+				bones[column_name] = bone
 	var seen : PackedStringArray
 	var result : Array
+	var non_results : Array
 	for bone in bones.keys():
 		var values = bones[bone]
 		values.sort_custom(sort_desc)
@@ -77,20 +76,44 @@ func _ready():
 			var improbability = abs(value[0])
 			if vrm_name == bone:
 				break
-			elif seen.has(vrm_name) or seen.has(bone):
+			elif seen.has(bone) or seen.has(vrm_name):
 				break
-			if vrm_name != "VRM_BONE_NONE":
-				result.push_back([bone, improbability, vrm_name])
-				seen.push_back(vrm_name)
+			elif not catboost.vrm_humanoid_bones.has(bone):
+				continue
+			elif improbability > 2.0:
+				continue
+			result.push_back([bone, improbability, vrm_name])
+			seen.push_back(vrm_name)
 			seen.push_back(bone)
+	for bone in bones.keys():
+		var values = bones[bone]
+		values.sort_custom(sort_desc)
+		values.resize(3)
+		for value in values:
+			var vrm_name = value[1]
+			var improbability = abs(value[0])
+			if vrm_name == bone:
+				break
+			elif seen.has(bone) or seen.has(vrm_name):
+				continue
+			elif not catboost.vrm_humanoid_bones.has(bone):
+				continue
+			non_results.push_back([bone, improbability, vrm_name])
+			seen.push_back(vrm_name)
+			seen.push_back(bone)
+	print("## Certain results.")
 	for res in result:
 		print("%s: improbability %s guessed %s" % res)
-	print("Returned %s results" % result.size())
+	print("Returned %d certain results" % [result.size()])
+	print("## Uncertain results.")
+	for res in non_results:
+		print("%s: improbability %s guessed %s" % res)		
+	print("Returned %d uncertain results" % [non_results.size()])
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
 
 func sort_desc(a, b):
-	if (neighbours.find(a[0]) > neighbours.find(b[0])) or a[0] > b[0]:
+	if a[0] > b[0]:
 		return true
 	return false
