@@ -75,7 +75,7 @@ func _ready():
 	catboost.find_neighbor_joint
 	print("## Results.")
 	var count = 0
-	for tolerance in range(20):
+	for tolerance in range(0, 100):
 		for bone_name in bones.keys():
 			var values = bones[bone_name]
 			for value in values:
@@ -88,7 +88,7 @@ func _ready():
 					continue
 				elif not catboost.vrm_humanoid_bones.has(bone_name):
 					continue
-				elif improbability >= (tolerance * 0.4):
+				elif improbability >= (tolerance * 0.1):
 					continue
 				if improbability > 0.5:
 					var bone_guesses : Array
