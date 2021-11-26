@@ -74,7 +74,6 @@ func _ready():
 	var uncertain_results : Array
 	for tolerance in range(20):
 		for vrm_name in bones.keys():
-			bones.values().sort_custom(sort_desc)
 			var values = bones[vrm_name]
 			for value in values:
 				var bone = value[1]
