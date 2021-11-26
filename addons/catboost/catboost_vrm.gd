@@ -30,11 +30,14 @@ var bones : Dictionary
 
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
-	var write_path_global = ProjectSettings.globalize_path("catboost/test.tsv")
-	var description_path_global = ProjectSettings.globalize_path("catboost/test_description.txt")
+	var scene_path = owner.scene_file_path
+	var write_path_global = ProjectSettings.globalize_path("user://" + scene_path.get_file().get_basename() + "-" + scene_path.md5_text() + ".tsv").replace("\\", "/")
+	var description_path_global = ProjectSettings.globalize_path("res://addons/catboost/model/train_description.txt")
+	var model_global = ProjectSettings.globalize_path("res://addons/catboost/model/vrm_model_2021-11-26.bin").replace("\\", "/")
 	catboost._write_import(self, true, write_path_global)
 	var stdout = [].duplicate()
-	var ret = OS.execute("CMD.exe", ["/C", "catboost calc -m catboost/model.bin --column-description %s --output-columns BONE,LogProbability --input-path %s --output-path stream://stdout --has-header" % [description_path_global, write_path_global]], stdout)	
+	var args = [model_global, description_path_global, write_path_global]
+	var ret = OS.execute("CMD.exe", ["/C catboost calc --model-file \"%s\" --column-description \"%s\" --output-columns BONE,LogProbability --input-path \"%s\" --output-path stream://stdout --has-header" % args], stdout)	
 	var bones : Dictionary
 	for elem_stdout in stdout:
 		var line : PackedStringArray = elem_stdout.split("\n")
@@ -104,17 +107,19 @@ func _ready():
 				non_results.push_back([bone, improbability, vrm_name])				
 				seen.push_back(vrm_name)
 				seen.push_back(bone)
-	print("## Certain results.")
-	for res in results:
-		print("%s: improbability %s guessed %s" % res)
-	print("Returned %d certain results" % [results.size()])
-	print("## Uncertain results.")
-	for res in non_results:
-		print("%s: improbability %s guessed %s" % res)		
-	print("Returned %d uncertain results" % [non_results.size()])
+	
 	if ret != 0:
 		print("Catboost returned " + str(ret))
 		return null
+	else:
+		print("## Certain results.")
+		for res in results:
+			print("%s: improbability %s guessed %s" % res)
+		print("Returned %d certain results" % [results.size()])
+		print("## Uncertain results.")
+		for res in non_results:
+			print("%s: improbability %s guessed %s" % res)		
+		print("Returned %d uncertain results" % [non_results.size()])
 
 func sort_desc(a, b):
 	if a[0] > b[0]:
