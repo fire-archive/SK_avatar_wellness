@@ -27,7 +27,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Avatar Wellness"
-run/main_scene="res://avatar_wellness/art/characters_validate/Vita.tscn"
 config/features=PackedStringArray("4.0")
 
 [autoload]
