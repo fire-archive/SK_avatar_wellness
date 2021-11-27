@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/avatar_wellness/art/characters_validate/fortnite_birthday_ramirez/scene.gltf" id="1_mxafd"]
+[ext_resource type="Script" path="res://addons/catboost/catboost_vrm.gd" id="2_xt8bo"]
+
+[node name="scene" instance=ExtResource( "1_mxafd" )]
+
+[node name="Skeleton3D" parent="RootNode (gltf orientation matrix)/RootNode (model correction matrix)/ad610c2f57ff45abbf169bb59e54c8bdfbx/Node2/RootNode/F_Med_Commando_01_Previewao/Node32" index="0"]
+script = ExtResource( "2_xt8bo" )

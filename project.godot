@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Avatar Wellness"
-run/main_scene="res://addons/avatar_wellness/art/characters_validate/Vita.tscn"
+run/main_scene="res://avatar_wellness/art/characters_validate/Vita.tscn"
 config/features=PackedStringArray("4.0")
 
 [autoload]
@@ -59,4 +59,8 @@ texture={
 [rendering]
 
 textures/vram_compression/import_bptc=true
+scaling_3d/mode=1
+scaling_3d/scale=0.5
+scaling_3d/fsr_sharpness=0.4
+anti_aliasing/quality/msaa=1
 occlusion_culling/use_occlusion_culling=true
