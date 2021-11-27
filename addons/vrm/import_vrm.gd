@@ -751,8 +751,8 @@ func _add_vrm_nodes_to_skin(obj: Dictionary) -> bool:
 	_add_joint_set_as_skin(obj, new_joints_set)
 
 	return true
-
-func _import_scene(path: String, flags: int, bake_fps: int):
+	
+func _import_scene(path: String, flags: int, options: Dictionary, bake_fps: int):
 	var f = File.new()
 	if f.open(path, File.READ) != OK:
 		return FAILED
@@ -869,9 +869,6 @@ func _import_scene(path: String, flags: int, bake_fps: int):
 func import_animation_from_other_importer(path: String, flags: int, bake_fps: int):
 	return self._import_animation(path, flags, bake_fps)
 
-
-func import_scene_from_other_importer(path: String, flags: int, bake_fps: int):
-	return self._import_scene(path, flags, bake_fps)
 
 func _convert_sql_to_material_param(column_name: String, value):
 	if "color" in column_name:
