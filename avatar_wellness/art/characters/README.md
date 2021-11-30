@@ -23,3 +23,6 @@
 * E96E66 background color
 * Add a screenshot
 * Check manifolds for skin tearing
+* test 0.00001 light intensity
+* test 16 light intensity
+* 16 light intensity and camera set to realistic focal length for a portrait makes the photo look good.
