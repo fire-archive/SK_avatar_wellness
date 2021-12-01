@@ -28,6 +28,22 @@ var catboost_path : String = "catboost"
 @export 
 var bones : Dictionary
 
+const vrm_humanoid_bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg","rightLowerLeg","leftFoot","rightFoot",
+ "spine","chest","neck","head","leftUpperArm","rightUpperArm",
+ "leftLowerArm","rightLowerArm","leftHand","rightHand"]
+
+const vrm_humanoid_bone_extras = ["leftShoulder","rightShoulder", "leftToes","rightToes","leftEye","rightEye","jaw",
+ "leftThumbProximal","leftThumbIntermediate","leftThumbDistal",
+ "leftIndexProximal","leftIndexIntermediate","leftIndexDistal",
+ "leftMiddleProximal","leftMiddleIntermediate","leftMiddleDistal",
+ "leftRingProximal","leftRingIntermediate","leftRingDistal",
+ "leftLittleProximal","leftLittleIntermediate","leftLittleDistal",
+ "rightThumbProximal","rightThumbIntermediate","rightThumbDistal",
+ "rightIndexProximal","rightIndexIntermediate","rightIndexDistal",
+ "rightMiddleProximal","rightMiddleIntermediate","rightMiddleDistal",
+ "rightRingProximal","rightRingIntermediate","rightRingDistal",
+ "rightLittleProximal","rightLittleIntermediate","rightLittleDistal", "upperChest"]
+
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
 	var scene_path = owner.scene_file_path
@@ -75,7 +91,7 @@ func _ready():
 	print("## Results.")
 	var count = 0
 	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size())) / 2.0
-	for tolerance in range(0, 40):
+	for tolerance in range(0, 100):
 		for bone_name in bones.keys():
 			var values = bones[bone_name]
 			for value in values:
@@ -86,13 +102,35 @@ func _ready():
 					break
 				elif seen.has(bone_name) or seen.has(vrm_name):
 					continue
-				elif not catboost.vrm_humanoid_bones.has(bone_name):
+				elif not vrm_humanoid_bones.has(bone_name):
+					continue
+				elif improbability >= (tolerance * 0.1):
+					continue
+				results[bone_name] = [vrm_name, probability]
+				print([bone_name, vrm_name, probability])
+				seen.push_back(vrm_name)
+				seen.push_back(bone_name)
+				count += 1
+			for s in seen:
+				bones.erase(s)
+	for tolerance in range(0, 100):
+		for bone_name in bones.keys():
+			var values = bones[bone_name]
+			for value in values:
+				var vrm_name = value[1]
+				var probability = value[0]
+				var improbability = abs(value[0])
+				if vrm_name == bone_name:
+					break
+				elif seen.has(bone_name) or seen.has(vrm_name):
+					continue
+				elif not vrm_humanoid_bone_extras.has(bone_name):
 					continue
 				elif improbability >= (tolerance * 0.1):
 					continue
 				if improbability <= abs_log_probability_of_bone:
 					results[bone_name] = [vrm_name, probability]
-					print([bone_name, vrm_name, probability])
+				print([bone_name, vrm_name, probability])
 				seen.push_back(vrm_name)
 				seen.push_back(bone_name)
 				count += 1
