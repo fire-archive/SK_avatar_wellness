@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3iq5q4lgcpkx"
-path="res://.godot/imported/ツインテ少女.vrm-d8edddf738df99f2341557f51de7079d.scn"
+uid="uid://cffnfe72olebl"
+path="res://.godot/imported/9054117983515433596.vrm-8bba65cded607e5e0b9e834dd5bb79cf.scn"
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/SK_ツインテ少女/ツインテ少女.vrm"
-dest_files=["res://.godot/imported/ツインテ少女.vrm-d8edddf738df99f2341557f51de7079d.scn"]
+source_file="res://avatar_wellness/art/characters/SK_Cat_Girl/9054117983515433596.vrm"
+dest_files=["res://.godot/imported/9054117983515433596.vrm-8bba65cded607e5e0b9e834dd5bb79cf.scn"]
 
 [params]
 
