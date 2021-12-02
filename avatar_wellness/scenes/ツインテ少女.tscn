@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0kx6t4r16ykl"]
-
-[ext_resource type="PackedScene" uid="uid://b3iq5q4lgcpkx" path="res://avatar_wellness/art/characters/SK_ツインテ少女/ツインテ少女.vrm" id="1_uhny2"]
-[ext_resource type="Script" path="res://addons/catboost/catboost_vrm.gd" id="2_tl5px"]
-
-[node name="ツインテ少女" instance=ExtResource( "1_uhny2" )]
-
-[node name="Skeleton3D" parent="." index="0"]
-script = ExtResource( "2_tl5px" )
