@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dns0t33plun7t"]
+
+[ext_resource type="PackedScene" uid="uid://dlc0or1g1gxxf" path="res://avatar_wellness/art/characters_raw/magic_girl_uniform/magic_girl_school.blend" id="1_pp8gc"]
+[ext_resource type="Script" path="res://addons/catboost/catboost_vrm.gd" id="2_bbunj"]
+
+[node name="magic_girl_school" instance=ExtResource( "1_pp8gc" )]
+
+[node name="Skeleton3D" parent="RootNode" index="2"]
+script = ExtResource( "2_bbunj" )
