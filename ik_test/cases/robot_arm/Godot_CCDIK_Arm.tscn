@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2q7b3rj850f6"]
+[gd_scene load_steps=6 format=3 uid="uid://d2q7b3rj850f6"]
 
 [ext_resource type="PackedScene" uid="uid://boqqfaxglbjxg" path="res://ik_test/cases/robot_arm/Godot_CCDIK_Arm.glb" id="1"]
+[ext_resource type="Script" path="res://addons/vsk_avatar/vsk_avatar_definition.gd" id="2_88of3"]
 
 [sub_resource type="SkeletonModification3DEWBIK" id="1"]
 root_bone = "Root"
-default_damp = 5.0
+ik_iterations = 1
 effector_count = 1
 effectors/0/name = "Joint_05"
 effectors/0/target_node = NodePath("Target")
-effectors/0/priority = Vector3(1, 1, 1)
+effectors/0/priority = Vector3(0.2, 5, 0.2)
 effectors/0/depth_falloff = 0.0
 effectors/0/remove = false
 
@@ -17,16 +18,82 @@ enabled = true
 modification_count = 1
 modifications/0 = SubResource( "1" )
 
+[sub_resource type="Skin" id="Skin_2qjmf"]
+resource_name = "Skin"
+bind_count = 9
+bind/0/name = &"Root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 0.000657523, 0)
+bind/1/name = &"Joint_00"
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.558072, 0)
+bind/2/name = &"Joint_01"
+bind/2/bone = -1
+bind/2/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.44347, 0)
+bind/3/name = &"Joint_02"
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.01343, 0)
+bind/4/name = &"Joint_03"
+bind/4/bone = -1
+bind/4/pose = Transform3D(0, 4.37114e-08, 1, 1, 0, 0, 0, 1, -4.37114e-08, -2.87902e-07, 0, -6.58643)
+bind/5/name = &"Joint_04"
+bind/5/bone = -1
+bind/5/pose = Transform3D(-1, 3.55271e-15, 0, -1.91069e-15, 6.78812e-30, 1, 3.55271e-15, 1, 0, 0.502351, 9.59836e-16, -6.58643)
+bind/6/name = &"Joint_05"
+bind/6/bone = -1
+bind/6/pose = Transform3D(0.976224, -0.216766, 0.000362485, 0.216766, 0.976218, -0.00330392, 0.000362312, 0.00330394, 0.999994, 0.937078, -6.53662, -0.648237)
+bind/7/name = &"Joint_05_Jaw_Right"
+bind/7/bone = -1
+bind/7/pose = Transform3D(-0.216345, -0.976224, 0.0134969, 0.974224, -0.216766, -0.0624527, 0.0638934, -0.000362335, 0.997957, 7.06408, 0.98777, -0.823596)
+bind/8/name = &"Joint_05_Jaw_Left"
+bind/8/bone = -1
+bind/8/pose = Transform3D(-0.216389, -0.976224, -0.0127733, 0.974624, -0.216766, 0.0558567, -0.0572975, -0.000362325, 0.998357, 7.08064, 0.912555, -0.422016)
+
 [node name="Godot_CCDIK_Arm" instance=ExtResource( "1" )]
+script = ExtResource( "2_88of3" )
+skeleton_path = NodePath("Robotic_Arm_Armature/Skeleton3D")
+database_id = ""
 
 [node name="Skeleton3D" parent="Robotic_Arm_Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177011, 0, 0)
+animate_physical_bones = false
+bones/0/position = Vector3(-0.0177011, -0.000657523, 4.22027e-09)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(nan, nan, nan)
+bones/1/position = Vector3(-0.0177011, 0.558729, -4.22027e-09)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/1/scale = Vector3(nan, nan, nan)
+bones/2/position = Vector3(-0.0177011, 0.885402, 0)
+bones/2/scale = Vector3(nan, nan, nan)
+bones/3/position = Vector3(-0.0177011, 2.56996, 0)
+bones/3/scale = Vector3(nan, nan, nan)
+bones/4/rest = Transform3D(0, 1, -5.96046e-08, 1.78814e-07, 0, 1, 1, -5.96046e-08, -2.38419e-07, 0, 2.573, 0)
+bones/4/position = Vector3(0, 2.573, -0.0177011)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
+bones/4/scale = Vector3(nan, nan, nan)
+bones/5/rest = Transform3D(0, 1, 4.37114e-08, -1, 0, 8.88178e-15, 5.32907e-15, -4.37114e-08, 1, 0, 0.502351, 0)
+bones/5/position = Vector3(0, 0.520052, -9.43304e-17)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/5/scale = Vector3(nan, nan, nan)
+bones/6/rest = Transform3D(-0.976224, -0.216766, -0.000362329, 0.000362478, -0.003304, 0.999995, -0.216766, 0.976218, 0.00330395, 2.34257e-14, 0.626298, 1.77636e-15)
+bones/6/position = Vector3(0.0172802, 0.626292, 0.003837)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/6/scale = Vector3(nan, nan, nan)
+bones/7/rest = Transform3D(0.000414968, 0.998025, 0.0628146, -0.999948, -0.00022614, 0.010199, 0.0101931, -0.0628156, 0.997973, 5.93215e-05, 0.535721, 0.163732)
+bones/7/position = Vector3(5.19761e-05, 0.553421, 0.163552)
+bones/7/rotation = Quaternion(-0.0258264, 0.0186131, -0.706715, 0.706782)
+bones/7/scale = Vector3(10, 10, 10)
+bones/8/rest = Transform3D(0.000362635, 0.998459, -0.0554947, -0.999871, -0.000530124, -0.0160723, -0.016077, 0.0554934, 0.99833, -5.93662e-05, 0.536803, -0.163732)
+bones/8/position = Vector3(-6.57852e-05, 0.554502, -0.163447)
+bones/8/rotation = Quaternion(0.0253139, -0.0139427, -0.706841, 0.706782)
+bones/8/scale = Vector3(10, 10, 10)
 modification_stack = SubResource( "2" )
 
+[node name="Robotic_Arm" parent="Robotic_Arm_Armature/Skeleton3D" index="0"]
+skin = SubResource( "Skin_2qjmf" )
+
 [node name="Target" type="Position3D" parent="Robotic_Arm_Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.911073, -0.412246, 0, 0.412246, 0.911073, 3.03121, 3.42294, -2.46521)
-script = null
+transform = Transform3D(1, 0, 0, 0, 0.911073, -0.412246, 0, 0.412246, 0.911073, -0.607063, 1.77521, -7.86017)
 
 [node name="Root" type="Node3D" parent="Robotic_Arm_Armature" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.993646, -0.112544, 0, 0.112544, 0.993647, 0, 0, 0)
-script = null
