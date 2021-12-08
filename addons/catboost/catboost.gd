@@ -48,7 +48,7 @@ static func bone_create():
 	]
 	for key_i in MAX_HIERARCHY:
 		var label = "BONE_HIERARCHY_" + str(key_i).pad_zeros(3)
-		CATBOOST_KEYS.push_back([label, "Text\t" + label, "BONE_NONE"])
+		CATBOOST_KEYS.push_back([label, "Categ\t" + label, "BONE_NONE"])
 	for key_i in CATBOOST_KEYS.size():
 		category_description.push_back(str(category_description.size()) + "\t" + CATBOOST_KEYS[key_i][1])
 		bone_category[CATBOOST_KEYS[key_i][0]] = CATBOOST_KEYS[key_i][2]
