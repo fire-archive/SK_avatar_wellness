@@ -144,7 +144,7 @@ static func _write_train(text, is_test, test_path):
 	var last_text = ""
 	if not is_test:
 		var old_file = File.new()
-		old_file.open(do_path, File.WRITE_READ)
+		old_file.open(do_path, File.READ_WRITE)
 		last_text = old_file.get_as_text()
 		old_file.close()
 	else:

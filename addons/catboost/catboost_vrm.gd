@@ -30,9 +30,10 @@ var bones : Dictionary
 
 const vrm_humanoid_bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg","rightLowerLeg","leftFoot","rightFoot",
  "spine","chest","neck","head","leftUpperArm","rightUpperArm",
- "leftLowerArm","rightLowerArm","leftHand","rightHand"]
-
-const vrm_humanoid_bone_extras = ["leftShoulder","rightShoulder", "leftToes","rightToes","leftEye","rightEye",
+ "leftLowerArm","rightLowerArm","leftHand","rightHand",
+#"upperChest", 
+#"jaw", 
+"leftShoulder","rightShoulder", "leftToes","rightToes","leftEye","rightEye",
  "leftThumbProximal","leftThumbIntermediate","leftThumbDistal",
  "leftIndexProximal","leftIndexIntermediate","leftIndexDistal",
  "leftMiddleProximal","leftMiddleIntermediate","leftMiddleDistal",
@@ -42,7 +43,7 @@ const vrm_humanoid_bone_extras = ["leftShoulder","rightShoulder", "leftToes","ri
  "rightIndexProximal","rightIndexIntermediate","rightIndexDistal",
  "rightMiddleProximal","rightMiddleIntermediate","rightMiddleDistal",
  "rightRingProximal","rightRingIntermediate","rightRingDistal",
- "rightLittleProximal","rightLittleIntermediate","rightLittleDistal", "upperChest", "jaw"]
+ "rightLittleProximal","rightLittleIntermediate","rightLittleDistal", ]
 
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
@@ -92,8 +93,9 @@ func _ready():
 	catboost.find_neighbor_joint
 	print("## Results.")
 	var count = 0
-	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size())) / 2.0
-	for tolerance in range(0, 40):
+	var defines : Dictionary
+	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size()))
+	for tolerance in range(0, 80):
 		for vrm_bone in vrm_humanoid_bones:
 			for bone_name in bones.keys():
 				if not bones.has(bone_name):
@@ -111,40 +113,22 @@ func _ready():
 						continue
 					elif improbability >= (tolerance * 0.1):
 						continue
-					elif improbability >= abs_log_probability_of_bone:
-						break
 					results[bone_name] = [vrm_name, probability]
 					print([bone_name, vrm_name, probability])
+					defines[bone_name] = vrm_name
 					seen.push_back(vrm_name)
 					seen.push_back(bone_name)
 					count += 1
 				for s in seen:
 					bones.erase(s)
-	print("## Improbable results.")
-	for tolerance in range(0, 100):
-		for vrm_bone in vrm_humanoid_bone_extras:
-			for bone_name in bones.keys():
-				var values = bones[bone_name]
-				for value in values:
-					var vrm_name = value[1]
-					var probability = value[0]
-					var improbability = abs(value[0])
-					if vrm_name == bone_name:
-						break
-					elif seen.has(bone_name) or seen.has(vrm_name):
-						continue
-					elif vrm_bone != bone_name:
-						continue
-					elif improbability >= (tolerance * 0.1):
-						continue
-					if improbability <= abs_log_probability_of_bone:
-						results[bone_name] = [vrm_name, probability]
-					print([bone_name, vrm_name, probability])
-					seen.push_back(vrm_name)
-					seen.push_back(bone_name)
-					count += 1
-				for s in seen:
-					bones.erase(s)
+	var json : JSON = JSON.new()
+	print("defines = " + json.stringify(defines))
+	print(
+"""
+arm = bpy.data.armatures[bpy.context.active_object.data.name]
+for d in defines:
+  arm[d] = defines[d]
+""")
 	print("Returned results " + str(count))
 	if ret != 0:
 		print("Catboost returned " + str(ret))
