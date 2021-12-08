@@ -9,10 +9,80 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Node",
+"class": &"ComponentNode",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/component_node.gd"
+}, {
+"base": "Node",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/entity.gd"
+}, {
+"base": "Node",
+"class": &"EntityManagerFunctions",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/entity_manager_functions.gd"
+}, {
+"base": "RefCounted",
+"class": &"EntityRef",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/entity_ref.gd"
+}, {
 "base": "Resource",
 "class": &"HumanoidData",
 "language": &"GDScript",
 "path": "res://addons/vsk_avatar/humanoid_data.gd"
+}, {
+"base": "NetworkLogic",
+"class": &"NetworkHierarchy",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_hierarchy.gd"
+}, {
+"base": "Node",
+"class": &"NetworkIdentity",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_identity.gd"
+}, {
+"base": "Node",
+"class": &"NetworkLogic",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_logic.gd"
+}, {
+"base": "NetworkLogic",
+"class": &"NetworkPhysics",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_physics.gd"
+}, {
+"base": "Node",
+"class": &"NetworkRPCTable",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_rpc_table.gd"
+}, {
+"base": "Position3D",
+"class": &"NetworkSpawn",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_spawn.gd"
+}, {
+"base": "NetworkLogic",
+"class": &"NetworkTransform",
+"language": &"GDScript",
+"path": "res://addons/network_manager/network_transform.gd"
+}, {
+"base": "Node",
+"class": &"RuntimeEntity",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/runtime_entity.gd"
+}, {
+"base": "Node",
+"class": &"SimulationLogic",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/simulation_logic.gd"
+}, {
+"base": "RefCounted",
+"class": &"StrongExclusiveEntityDependencyHandle",
+"language": &"GDScript",
+"path": "res://addons/entity_manager/strong_exclusive_entity_dependency_handle.gd"
 }, {
 "base": "Node3D",
 "class": &"VRMTopLevel",
@@ -20,7 +90,21 @@ _global_script_classes=[{
 "path": "res://addons/vrm/vrm_toplevel.gd"
 }]
 _global_script_class_icons={
+"ComponentNode": "",
+"Entity": "",
+"EntityManagerFunctions": "",
+"EntityRef": "",
 "HumanoidData": "",
+"NetworkHierarchy": "",
+"NetworkIdentity": "",
+"NetworkLogic": "",
+"NetworkPhysics": "",
+"NetworkRPCTable": "",
+"NetworkSpawn": "",
+"NetworkTransform": "",
+"RuntimeEntity": "",
+"SimulationLogic": "",
+"StrongExclusiveEntityDependencyHandle": "",
 "VRMTopLevel": ""
 }
 
@@ -33,8 +117,12 @@ config/features=PackedStringArray("4.0")
 
 VSKExporter="*res://addons/vsk_importer_exporter/vsk_exporter.gd"
 VSKImporter="*res://addons/vsk_importer_exporter/vsk_importer.gd"
-GodotMathExtension="*res://addons/math_util/math_funcs.gd"
 ConnectionUtil="*res://addons/gd_util/connection_util.gd"
+EntityManager="*res://addons/entity_manager/entity_manager.gd"
+GodotMathExtension="*res://addons/math_util/math_funcs.gd"
+NetworkManager="*res://addons/network_manager/network_manager.gd"
+NetworkLogger="*res://addons/network_manager/network_logger.gd"
+LogManager="*res://addons/sar1_log_manager/log_manager.gd"
 
 [display]
 
@@ -48,6 +136,10 @@ import/reimport_missing_imported_files=false
 
 enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/blend/plugin.cfg", "res://addons/bvh/plugin.cfg", "res://addons/gd_util/plugin.cfg", "res://addons/math_util/plugin.cfg", "res://addons/vrm/plugin.cfg", "res://addons/vsk_avatar/plugin.cfg", "res://addons/vsk_importer_exporter/plugin.cfg", "res://addons/vsk_version/plugin.cfg", "res://addons/vsk_vrm_avatar_tool/plugin.cfg")
 
+[entities]
+
+config/process_priority=0
+
 [filesystem]
 
 import/blend/blender_path="C:/Users/elee/scoop/apps/steam/current/steamapps/common/Blender/blender.exe"
@@ -58,6 +150,15 @@ texture={
 "compress/bptc_ldr": 2,
 "compress/mode": 2
 }
+
+[network]
+
+config/networked_scenes=PackedStringArray()
+config/max_networked_entities=4096
+config/network_fps=60
+config/entity_root_node=NodePath("")
+config/compression_mode=0
+config/default_port=7777
 
 [rendering]
 
