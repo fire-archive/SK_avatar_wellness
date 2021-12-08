@@ -54,7 +54,9 @@ func _ready():
 	catboost._write_import(self, true, write_path_global)
 	var stdout = [].duplicate()
 	var args = [catboost_global, model_global, description_path_global, write_path_global]
-	var ret = OS.execute("CMD.exe", ["/C %s calc --model-file \"%s\" --column-description \"%s\" --output-columns BONE,LogProbability --input-path \"%s\" --output-path stream://stdout --has-header" % args], stdout)	
+	var replaced_args = ["/C %s calc --model-file \"%s\" --column-description \"%s\" --output-columns BONE,LogProbability --input-path \"%s\" --output-path stream://stdout --has-header" % args]
+	print(replaced_args)
+	var ret = OS.execute("CMD.exe", replaced_args, stdout)	
 	var bones : Dictionary
 	for elem_stdout in stdout:
 		var line : PackedStringArray = elem_stdout.split("\n")
@@ -91,7 +93,7 @@ func _ready():
 	print("## Results.")
 	var count = 0
 	var abs_log_probability_of_bone = abs(log(1.0 / catboost.vrm_humanoid_bones.size())) / 2.0
-	for tolerance in range(0, 100):
+	for tolerance in range(0, 40):
 		for vrm_bone in vrm_humanoid_bones:
 			for bone_name in bones.keys():
 				if not bones.has(bone_name):
@@ -109,6 +111,8 @@ func _ready():
 						continue
 					elif improbability >= (tolerance * 0.1):
 						continue
+					elif improbability >= abs_log_probability_of_bone:
+						break
 					results[bone_name] = [vrm_name, probability]
 					print([bone_name, vrm_name, probability])
 					seen.push_back(vrm_name)
@@ -116,6 +120,7 @@ func _ready():
 					count += 1
 				for s in seen:
 					bones.erase(s)
+	print("## Improbable results.")
 	for tolerance in range(0, 100):
 		for vrm_bone in vrm_humanoid_bone_extras:
 			for bone_name in bones.keys():
