@@ -20,9 +20,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Skeleton3D
+@tool
+extends EditorScenePostImport
 
-func _ready():
-	var catboost : RefCounted = load("res://addons/catboost/catboost.gd").new()
-	catboost._write_import(self, false, "")
+var catboost : RefCounted = preload("res://addons/catboost/catboost.gd")
+const avatar_editor_const = preload("res://addons/vsk_avatar/vsk_avatar_definition_editor.gd")
+
+func _post_import(scene : Node):
+	var queue : Array
+	queue.push_back(scene)
+	var string_builder : Array
+	while not queue.is_empty():
+		var front = queue.front()
+		var node = front
+		if node is Skeleton3D:
+			avatar_editor_const.correct_bone_directions(scene, node, null, null)
+			avatar_editor_const._refresh_skeleton(node)
+			catboost._write_import(node, false, "")
+			break
+		var child_count : int = node.get_child_count()
+		for i in child_count:
+			queue.push_back(node.get_child(i))
+		queue.pop_front()	
+	return scene
+
+
 
