@@ -36,7 +36,7 @@ func _post_import(scene : Node):
 		if node is Skeleton3D:
 			avatar_editor_const.correct_bone_directions(scene, node, null, null)
 			avatar_editor_const._refresh_skeleton(node)
-			catboost._write_import(node, false, "")
+			catboost._write_import(scene, false, "")
 			break
 		var child_count : int = node.get_child_count()
 		for i in child_count:
