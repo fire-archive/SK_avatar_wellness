@@ -22,3 +22,6 @@
 [submodule "addons/network_manager"]
 	path = addons/network_manager
 	url = https://github.com/V-Sekai/network_manager.git
+[submodule "addons/sar1_log_manager"]
+	path = addons/sar1_log_manager
+	url = https://github.com/V-Sekai/sar1_log_manager.git
