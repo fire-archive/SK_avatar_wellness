@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ldxbm0hsjhp3"]
+
+[ext_resource type="PackedScene" uid="uid://b3iq5q4lgcpkx" path="res://ik_test/cases/SK_ツインテ少女/ツインテ少女.vrm" id="1_h417y"]
+
+[node name="ツインテ少女" instance=ExtResource( "1_h417y" )]
