@@ -25,3 +25,6 @@
 [submodule "addons/sar1_log_manager"]
 	path = addons/sar1_log_manager
 	url = https://github.com/V-Sekai/sar1_log_manager.git
+[submodule "avatar-wellness"]
+	path = avatar-wellness
+	url = https://github.com/fire/avatar-wellness.git
