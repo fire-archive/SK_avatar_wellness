@@ -802,9 +802,8 @@ func _import_scene(path: String, flags: int, bake_fps: int):
 	var gstate : GLTFState = GLTFState.new()
 	var gltf : GLTFDocument = GLTFDocument.new()
 	print(path);
-	var error = OK
-	error = gltf.append_from_file(path, gstate, flags, bake_fps)
-	var root_node : Node = gltf.generate_scene(gstate, 30.0)
+	
+	var root_node : Node = gltf.import_scene(tmp_path, 0, 30.0, gstate)
 	root_node.name = path.get_basename().get_file()
 	var d: Directory = Directory.new()
 	d.open("res://")
