@@ -173,3 +173,4 @@ scaling_3d/scale=1.2
 scaling_3d/fsr_sharpness=0.4
 anti_aliasing/quality/msaa=1
 occlusion_culling/use_occlusion_culling=true
+mesh_lod/lod_change/threshold_pixels=4.0
