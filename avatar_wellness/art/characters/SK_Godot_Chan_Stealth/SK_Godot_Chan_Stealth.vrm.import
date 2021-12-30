@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://suyuhy5abgew"
+uid="uid://ci6wesdmilr24"
 path="res://.godot/imported/SK_Godot_Chan_Stealth.vrm-0594c93209a3795e2afcff5278ace04a.scn"
 
 [deps]
@@ -24,6 +24,6 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-import_script/path=""
+import_script/path="res://addons/catboost/catboost_post_scene_import.gd"
 _subresources={
 }
