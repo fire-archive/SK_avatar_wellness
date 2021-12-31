@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bokjhn8dfa5sj"
+uid="uid://bpqfa8do1ccj1"
 path="res://.godot/imported/Godot_Simple_Test_Rig.glb-8d2c2f9c4064421157d04041120ec2b9.scn"
 
 [deps]
@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Godot_Simple_Test_Rig.glb-8d2c2f9c4064421157d
 nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/root_scale=0.01
-nodes/generate_physics=null
+nodes/generate_physics=false
 nodes/generate_navmesh=0
-physics/body_type=1
+physics/body_type=0
 physics/shape_type=0
 decomposition/advanced=false
 decomposition/precision=5
@@ -48,6 +48,6 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 animation/import=true
 animation/fps=15
-import_script/path=""
+import_script/path="res://addons/catboost/correct_bone_dir_post_scene_import.gd"
 _subresources={
 }
