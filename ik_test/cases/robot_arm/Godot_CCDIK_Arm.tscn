@@ -5,13 +5,19 @@
 
 [sub_resource type="SkeletonModification3DEWBIK" id="1"]
 root_bone = "Root"
-effector_count = 1
-effectors/0/name = "Joint_05"
-effectors/0/target_node = NodePath("Target")
-effectors/0/use_node_rotation = false
-effectors/0/priority = Vector3(1, 0.1, 1)
-effectors/0/depth_falloff = 1.0
-effectors/0/remove = false
+pin_count = 2
+pins/0/name = "Joint_05"
+pins/0/target_node = NodePath("../../Pin5")
+pins/0/use_node_rotation = false
+pins/0/priority = Vector3(1, 1, 1)
+pins/0/depth_falloff = 1.0
+pins/0/remove = false
+pins/1/name = "Joint_02"
+pins/1/target_node = NodePath("../../Pin2")
+pins/1/use_node_rotation = false
+pins/1/priority = Vector3(1, 1, 1)
+pins/1/depth_falloff = 1.0
+pins/1/remove = false
 
 [sub_resource type="SkeletonModificationStack3D" id="2"]
 enabled = true
@@ -56,46 +62,48 @@ database_id = ""
 vskeditor_preview_type = 0
 vskeditor_pipeline_paths = []
 
+[node name="Pin2" type="Position3D" parent="." index="0"]
+transform = Transform3D(0.593658, 0.565686, 0.572336, 0.665065, 0.0555189, -0.744718, -0.453053, 0.82275, -0.343259, 8.99472, 7.32047, -2.76307)
+
+[node name="Pin5" type="Position3D" parent="." index="1"]
+transform = Transform3D(0.525984, 0.761346, -0.379068, 0.674382, -0.10178, 0.731334, 0.518217, -0.640307, -0.566973, -0.836237, 6.32705, -0.232354)
+
 [node name="Skeleton3D" parent="Robotic_Arm_Armature" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177011, 0, 0)
 animate_physical_bones = false
-bones/0/rotation = Quaternion(-0.0517031, -0.012286, -0.138606, 0.988921)
-bones/0/scale = Vector3(0.999995, 0.999998, 0.999995)
-bones/1/position = Vector3(-0.000984434, 0.566766, 0.00036042)
-bones/1/rotation = Quaternion(-0.0249613, -0.0562311, 0.0466581, 0.997015)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(-7.99708e-05, 0.89064, -0.000239886)
-bones/2/rotation = Quaternion(0.0592119, 0.0182543, 0.0128053, 0.997996)
+bones/0/rotation = Quaternion(-0.259628, -0.254218, -0.0265559, 0.931269)
+bones/0/scale = Vector3(0.999999, 0.999999, 1)
+bones/1/position = Vector3(-0.00105832, 0.567526, 0.000388659)
+bones/1/rotation = Quaternion(-0.439156, 0.747648, -0.2684, -0.419673)
+bones/2/position = Vector3(-9.58145e-05, 0.891153, -0.000265032)
+bones/2/rotation = Quaternion(0.831434, -0.258494, -0.0570113, -0.488517)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(0.000172392, 2.60067, 9.75579e-05)
-bones/3/rotation = Quaternion(-0.0336723, 0.21258, 0.0151366, 0.976446)
-bones/3/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(0.000202209, 2.60238, 1.34706e-05)
+bones/3/rotation = Quaternion(0.307583, 0.893639, 0.247784, 0.213084)
+bones/3/scale = Vector3(0.999999, 1, 1)
 bones/4/rest = Transform3D(0, 1, -5.96046e-08, 1.78814e-07, 0, 1, 1, -5.96046e-08, -2.38419e-07, 0, 2.573, 0)
-bones/4/position = Vector3(-0.000138253, 2.58499, -0.000123084)
-bones/4/rotation = Quaternion(-0.449933, -0.40574, -0.544845, 0.579723)
+bones/4/position = Vector3(-0.000116348, 2.58679, 0.000132143)
+bones/4/rotation = Quaternion(0.70645, -0.239733, 0.632013, 0.209804)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/rest = Transform3D(0, 1, 4.37114e-08, -1, 0, 8.88178e-15, 5.32907e-15, -4.37114e-08, 1, 0, 0.502351, 0)
-bones/5/position = Vector3(-1.29938e-05, 0.504363, -6.53267e-05)
-bones/5/rotation = Quaternion(0.0733276, 0.0396464, -0.667536, 0.739897)
+bones/5/position = Vector3(3.21865e-06, 0.50457, -0.000121832)
+bones/5/rotation = Quaternion(-0.336365, 0.335945, -0.089509, 0.875207)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rest = Transform3D(-0.976224, -0.216766, -0.000362329, 0.000362478, -0.003304, 0.999995, -0.216766, 0.976218, 0.00330395, 2.34257e-14, 0.626298, 1.77636e-15)
-bones/6/position = Vector3(0.000268698, 0.629161, -0.000907421)
-bones/6/rotation = Quaternion(-0.0945916, 0.72627, 0.680558, -0.0206093)
+bones/6/position = Vector3(0.000325203, 0.62952, -0.0009799)
+bones/6/rotation = Quaternion(0.0250604, 0.477816, 0.488573, 0.729631)
 bones/7/rest = Transform3D(0.000414968, 0.998025, 0.0628146, -0.999948, -0.00022614, 0.010199, 0.0101931, -0.0628156, 0.997973, 5.93215e-05, 0.535721, 0.163732)
-bones/7/position = Vector3(6.1512e-05, 0.53584, 0.163767)
-bones/7/rotation = Quaternion(-0.0258246, 0.0186133, -0.706784, 0.706713)
-bones/7/scale = Vector3(1.00004, 1.00002, 0.999985)
+bones/7/position = Vector3(6.90222e-05, 0.535857, 0.163774)
+bones/7/rotation = Quaternion(-0.0258227, 0.0186114, -0.706815, 0.706682)
+bones/7/scale = Vector3(0.999992, 0.999999, 0.999999)
 bones/8/rest = Transform3D(0.000362635, 0.998459, -0.0554947, -0.999871, -0.000530124, -0.0160723, -0.016077, 0.0554934, 0.99833, -5.93662e-05, 0.536803, -0.163732)
-bones/8/position = Vector3(-5.49555e-05, 0.536962, -0.163768)
-bones/8/rotation = Quaternion(0.0253161, -0.0139431, -0.706859, 0.706764)
-bones/8/scale = Vector3(1, 1.00002, 0.999982)
+bones/8/position = Vector3(-5.40018e-05, 0.536981, -0.163784)
+bones/8/rotation = Quaternion(0.025316, -0.0139422, -0.70686, 0.706763)
+bones/8/scale = Vector3(1.00001, 0.999986, 1.00001)
 modification_stack = SubResource( "2" )
 
 [node name="Robotic_Arm" parent="Robotic_Arm_Armature/Skeleton3D" index="0"]
 skin = SubResource( "Skin_2qjmf" )
-
-[node name="Target" type="Position3D" parent="Robotic_Arm_Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.525984, 0.761346, -0.379068, 0.674382, -0.10178, 0.731334, 0.518217, -0.640307, -0.566973, 1.74775, 6.32705, -0.232354)
 
 [node name="Root" type="Node3D" parent="Robotic_Arm_Armature" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.993646, -0.112544, 0, 0.112544, 0.993647, 0, 0, 0)
