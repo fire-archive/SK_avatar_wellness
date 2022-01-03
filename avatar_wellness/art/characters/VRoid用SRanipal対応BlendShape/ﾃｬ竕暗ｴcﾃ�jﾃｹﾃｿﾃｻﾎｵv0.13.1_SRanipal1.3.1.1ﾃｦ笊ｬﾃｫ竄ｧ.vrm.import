@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ci41eedmrt4ye"
-path="res://.godot/imported/adult_female.blend-aa5a8aab64be9059ed2a7d3a82a8b3c7.scn"
+uid="uid://q6qs420mwjbf"
+path="res://.godot/imported/ﾃｬ竕暗ｴcﾃ�jﾃｹﾃｿﾃｻﾎｵv0.13.1_SRanipal1.3.1.1ﾃｦ笊ｬﾃｫ竄ｧ.vrm-d5318eba491f6bfd9298d5dcb92ad5fb.scn"
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/SK_Adult_Female/adult_female.blend"
-dest_files=["res://.godot/imported/adult_female.blend-aa5a8aab64be9059ed2a7d3a82a8b3c7.scn"]
+source_file="res://avatar_wellness/art/characters/VRoid用SRanipal対応BlendShape/ﾃｬ竕暗ｴcﾃ�jﾃｹﾃｿﾃｻﾎｵv0.13.1_SRanipal1.3.1.1ﾃｦ笊ｬﾃｫ竄ｧ.vrm"
+dest_files=["res://.godot/imported/ﾃｬ竕暗ｴcﾃ�jﾃｹﾃｿﾃｻﾎｵv0.13.1_SRanipal1.3.1.1ﾃｦ笊ｬﾃｫ竄ｧ.vrm-d5318eba491f6bfd9298d5dcb92ad5fb.scn"]
 
 [params]
 
