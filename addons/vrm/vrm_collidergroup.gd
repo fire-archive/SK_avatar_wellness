@@ -27,7 +27,7 @@ var colliders: Array = []
 var bone_idx: int = -1
 var parent: Node3D = null
 
-var skel_polyfill: Object = null
+var skel: Object = null
 
 func setup():
 	if parent != null:
@@ -35,19 +35,18 @@ func setup():
 		for collider in sphere_colliders:
 			colliders.append(SphereCollider.new(bone_idx, collider.normal, collider.d))
 
-func _ready(parent: Node3D, skel_polyfill: Object):
+
+func _ready(parent: Node3D, skel: Object):
 	self.parent = parent
 	if parent.get_class() == "Skeleton3D":
-		self.skel_polyfill = skel_polyfill
+		self.skel = skel
 		bone_idx = parent.find_bone(bone)
 	setup()
 
+
 func _process():
 	for collider in colliders:
-		collider.update(parent, skel_polyfill)
-
-
-
+		collider.update(parent, skel)
 
 
 class SphereCollider:
@@ -60,16 +59,14 @@ class SphereCollider:
 		idx = bone_idx
 		offset = VRMTopLevel.VRMUtil.coordinate_u2g(collider_offset)
 		radius = collider_radius
-		return
 	
-	func update(parent: Node3D, skel_polyfill: Object):
+	func update(parent: Node3D, skel: Object):
 		if parent.get_class() == "Skeleton3D" && idx != -1:
 			var skeleton: Skeleton3D = parent as Skeleton3D
-			position = VRMTopLevel.VRMUtil.transform_point((skeleton.global_transform * skel_polyfill.get_bone_global_pose_without_override(idx)), offset)
+			position = VRMTopLevel.VRMUtil.transform_point((skeleton.global_pose_to_world_transform(skel.get_bone_global_pose_no_override(idx))), offset)
 		else:
 			position = VRMTopLevel.VRMUtil.transform_point(parent.global_transform, offset)
-		return
-	
+
 	func get_radius() -> float:
 		return radius
 	

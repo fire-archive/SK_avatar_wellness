@@ -12,10 +12,10 @@ extends Node3D
 
 @export var update_in_editor: bool = false
 @export var gizmo_spring_bone: bool = false
-@export var gizmo_spring_bone_color: Color = Color.YELLOW
+@export var gizmo_spring_bone_color: Color = Color.LIGHT_YELLOW
 
 class VRMUtil:
-	static func from_to_rotation(from: Vector3, to: Vector3):
+	static func from_to_rotation(from: Vector3, to: Vector3) -> Quaternion:
 		var axis: Vector3 = from.cross(to)
 		if is_equal_approx(axis.x, 0.0) and is_equal_approx(axis.y, 0.0) and is_equal_approx(axis.z, 0.0):
 			return Quaternion.IDENTITY
