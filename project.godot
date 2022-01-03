@@ -135,10 +135,6 @@ LogManager="*res://addons/sar1_log_manager/log_manager.gd"
 
 window/dpi/allow_hidpi=true
 
-[editor]
-
-import/reimport_missing_imported_files=false
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/blend/plugin.cfg", "res://addons/bvh/plugin.cfg", "res://addons/gd_util/plugin.cfg", "res://addons/math_util/plugin.cfg", "res://addons/vrm/plugin.cfg", "res://addons/vsk_avatar/plugin.cfg", "res://addons/vsk_importer_exporter/plugin.cfg", "res://addons/vsk_version/plugin.cfg", "res://addons/vsk_vrm_avatar_tool/plugin.cfg")
@@ -149,7 +145,7 @@ config/process_priority=0
 
 [filesystem]
 
-import/blend/blender_path="C:/Users/elee/scoop/apps/steam/current/steamapps/common/Blender/blender.exe"
+import/blend/blender_path="blender"
 
 [importer_defaults]
 
