@@ -3,14 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cniv5p0ho2cvj"
-path="res://.godot/imported/magic_girl_mahou.blend-249f5e970d0c5243d804c61f57a61987.scn"
+uid="uid://bg7i5kik1rdyg"
+valid=false
 
 [deps]
 
 source_file="res://avatar_wellness/art/characters/SK_魔法少女☆彡/magic_girl_mahou.blend"
-dest_files=["res://.godot/imported/magic_girl_mahou.blend-249f5e970d0c5243d804c61f57a61987.scn"]
-
 [params]
 
 nodes/root_type="Node3D"
@@ -51,3 +49,18 @@ animation/fps=30
 import_script/path=""
 _subresources={
 }
+blender/nodes/visible=2
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true
