@@ -45,6 +45,22 @@ const vrm_humanoid_bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg"
  "rightRingProximal","rightRingIntermediate","rightRingDistal",
  "rightLittleProximal","rightLittleIntermediate","rightLittleDistal", ]
 
+class TopologicalSorter:
+	static func sort(p, q):
+		if (p.x + p.y) < (q.x + q.y):
+			return true
+		return false
+
+func sort_bones():
+	var graph : Array
+	for b in get_bone_count():
+		graph.append(Vector2(get_bone_parent(b), b))
+	graph.sort_custom(Callable(TopologicalSorter, "sort"))
+	var names : Array
+	for g in graph:
+		names.append(get_bone_name(g.y))
+	return names
+
 func _ready():
 	var catboost = load("res://addons/catboost/catboost.gd").new()
 	var scene_path = owner.scene_file_path
