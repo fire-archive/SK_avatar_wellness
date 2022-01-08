@@ -25,3 +25,6 @@
 [submodule "addons/sar1_log_manager"]
 	path = addons/sar1_log_manager
 	url = https://github.com/V-Sekai/sar1_log_manager.git
+[submodule "blue_tin_fox"]
+	path = blue_tin_fox
+	url = https://github.com/V-Sekai/blender-art-blue-tin-fox-models.git
