@@ -4,11 +4,13 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://575tokmby8hh"
-valid=false
+path="res://.godot/imported/mannequiny.blend-b223aa183749ca99f7c6e0521c1d98fd.scn"
 
 [deps]
 
 source_file="res://avatar_wellness/art/characters/mannequiny/mannequiny.blend"
+dest_files=["res://.godot/imported/mannequiny.blend-b223aa183749ca99f7c6e0521c1d98fd.scn"]
+
 [params]
 
 nodes/root_type="Node3D"

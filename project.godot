@@ -169,8 +169,10 @@ config/default_port=7777
 
 [rendering]
 
+driver/threads/thread_model=2
 textures/vram_compression/import_bptc=true
-scaling_3d/scale=1.2
+scaling_3d/mode=1
+scaling_3d/scale=0.59
 scaling_3d/fsr_sharpness=0.4
 anti_aliasing/quality/msaa=1
 occlusion_culling/use_occlusion_culling=true
