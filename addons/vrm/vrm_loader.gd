@@ -330,7 +330,18 @@ func _create_meta(root_node: Node, animplayer: AnimationPlayer, vrm_extension: D
 
 	var humanBoneDictionary: Dictionary = {}
 	for humanBoneName in human_bone_to_idx:
-		humanBoneDictionary[humanBoneName] = gltfnodes[human_bone_to_idx[humanBoneName]].resource_name
+		var gltfNodeName = gltfnodes[human_bone_to_idx[humanBoneName]].resource_name
+		gltfnodes[human_bone_to_idx[humanBoneName]].resource_name = humanBoneName
+		var boneId = skeleton.find_bone(gltfNodeName)
+		skeleton.set_bone_name(boneId, humanBoneName)
+		var children = skeleton.get_children()
+		for gltfSkin in gstate.get_skins():
+			var skin : Skin = gltfSkin.get_godot_skin()
+			for bind_i in skin.get_bind_count():
+				if skin.get_bind_name(bind_i) == gltfNodeName:
+					var pose = skin.set_bind_name(bind_i, humanBoneName)
+					break
+		humanBoneDictionary[humanBoneName] = humanBoneName
 
 	var vrm_meta: Resource = load("res://addons/vrm/vrm_meta.gd").new()
 
