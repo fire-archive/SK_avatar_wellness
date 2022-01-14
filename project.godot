@@ -130,10 +130,6 @@ NetworkManager="*res://addons/network_manager/network_manager.gd"
 NetworkLogger="*res://addons/network_manager/network_logger.gd"
 LogManager="*res://addons/sar1_log_manager/log_manager.gd"
 
-[display]
-
-window/dpi/allow_hidpi=true
-
 [editor]
 
 import/reimport_missing_imported_files=false
