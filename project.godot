@@ -117,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Avatar Wellness"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "Double Precision")
 
 [autoload]
 
@@ -140,8 +140,8 @@ config/process_priority=0
 
 [filesystem]
 
-import/fbx/use_fbx=false
 import/blender/enabled=true
+import/fbx/use_fbx=false
 import/blend/blender_path="null"
 
 [importer_defaults]
@@ -169,3 +169,4 @@ scaling_3d/scale=0.59
 scaling_3d/fsr_sharpness=0.4
 anti_aliasing/quality/msaa=1
 occlusion_culling/use_occlusion_culling=true
+mesh_lod/lod_change/threshold_pixels=0.0
