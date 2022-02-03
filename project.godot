@@ -140,7 +140,6 @@ config/process_priority=0
 
 [filesystem]
 
-import/blender/enabled=true
 import/fbx/use_fbx=false
 import/blend/blender_path="null"
 

@@ -4,13 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ci41eedmrt4ye"
-path="res://.godot/imported/adult_female.blend-aa5a8aab64be9059ed2a7d3a82a8b3c7.scn"
+valid=false
 
 [deps]
 
 source_file="res://avatar_wellness/art/characters/SK_Adult_Female/adult_female.blend"
-dest_files=["res://.godot/imported/adult_female.blend-aa5a8aab64be9059ed2a7d3a82a8b3c7.scn"]
-
 [params]
 
 nodes/root_type="Node3D"
