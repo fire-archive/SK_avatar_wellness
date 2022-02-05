@@ -21,11 +21,11 @@
 # SOFTWARE.
 
 @tool
-extends EditorScenePostImport
+extends EditorScenePostImportPlugin
 
 const avatar_editor_const = preload("res://addons/vsk_avatar/vsk_avatar_definition_editor.gd")
 
-func _post_import(scene : Node):
+func _post_process(scene: Node) -> void:
 	var queue : Array
 	queue.push_back(scene)
 	var string_builder : Array

@@ -132,7 +132,7 @@ LogManager="*res://addons/sar1_log_manager/log_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/bvh/plugin.cfg", "res://addons/entity_manager/plugin.cfg", "res://addons/gd_util/plugin.cfg", "res://addons/math_util/plugin.cfg", "res://addons/network_manager/plugin.cfg", "res://addons/sar1_log_manager/plugin.cfg", "res://addons/vrm/plugin.cfg", "res://addons/vsk_avatar/plugin.cfg", "res://addons/vsk_importer_exporter/plugin.cfg", "res://addons/vsk_map/plugin.cfg", "res://addons/vsk_version/plugin.cfg", "res://addons/vsk_vrm_avatar_tool/plugin.cfg")
+enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/bvh/plugin.cfg", "res://addons/correct_bone_direction/plugin.cfg", "res://addons/entity_manager/plugin.cfg", "res://addons/gd_util/plugin.cfg", "res://addons/math_util/plugin.cfg", "res://addons/network_manager/plugin.cfg", "res://addons/sar1_log_manager/plugin.cfg", "res://addons/vrm/plugin.cfg", "res://addons/vsk_avatar/plugin.cfg", "res://addons/vsk_importer_exporter/plugin.cfg", "res://addons/vsk_map/plugin.cfg", "res://addons/vsk_version/plugin.cfg", "res://addons/vsk_vrm_avatar_tool/plugin.cfg")
 
 [entities]
 
