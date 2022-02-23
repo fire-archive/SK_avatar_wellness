@@ -1,0 +1,6 @@
+[core]
+    remote = chibifire-dvc
+    autostage = true
+['remote "chibifire-dvc"']
+    url = s3://chibifire/dvc
+    endpointurl = https://sfo3.digitaloceanspaces.com
