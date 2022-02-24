@@ -1,1 +1,1 @@
-dvc push --remote chibifire-dvc-s3 -A -d
+dvc push --remote chibifire-dvc-s3 --all-commits --with-deps --recursive
