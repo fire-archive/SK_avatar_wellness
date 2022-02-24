@@ -21,7 +21,7 @@ func _ready() -> void:
 
 	if secondary_gizmo == null and (Engine.is_editor_hint() or gizmo_spring_bone):
 		secondary_gizmo = SecondaryGizmo.new(self)
-		add_child(secondary_gizmo)
+		add_child(secondary_gizmo, true)
 	collider_groups_internal.clear()
 	spring_bones_internal.clear()
 	for collider_group in collider_groups:
@@ -52,17 +52,13 @@ func check_for_editor_update() -> bool:
 		if not parent.update_in_editor and update_in_editor:
 			update_in_editor = false
 			for spring_bone in spring_bones_internal:
-				spring_bone.skel.clear_bones_global_pose_override()
+				spring_bone.skel.clear_bones_local_pose_override()
 	return update_in_editor
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	if not update_secondary_fixed:
 		if not Engine.is_editor_hint() or check_for_editor_update():
-			# force update skeleton
-			for spring_bone in spring_bones_internal:
-				if spring_bone.skel != null:
-					spring_bone.skel.get_bone_global_pose_no_override(0)
 			for collider_group in collider_groups_internal:
 				collider_group._process()
 			for spring_bone in spring_bones_internal:
@@ -80,10 +76,6 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	if update_secondary_fixed:
 		if not Engine.is_editor_hint() or check_for_editor_update():
-			# force update skeleton
-			for spring_bone in spring_bones_internal:
-				if spring_bone.skel != null:
-					spring_bone.skel.get_bone_global_pose_no_override(0)
 			for collider_group in collider_groups_internal:
 				collider_group._process()
 			for spring_bone in spring_bones_internal:
@@ -100,7 +92,7 @@ func _physics_process(delta) -> void:
 
 class SecondaryGizmo:
 	extends MeshInstance3D
-	
+
 	var secondary_node
 	var m: StandardMaterial3D = StandardMaterial3D.new()
 
@@ -111,19 +103,19 @@ class SecondaryGizmo:
 		m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 		m.vertex_color_use_as_albedo = true
 		m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	
+
 	func draw_in_editor(do_draw_spring_bones: bool = false) -> void:
 		mesh.clear_surfaces()
 		if secondary_node.get_parent() is VRMTopLevel && secondary_node.get_parent().gizmo_spring_bone:
 			draw_spring_bones(secondary_node.get_parent().gizmo_spring_bone_color)
 			draw_collider_groups()
-	
+
 	func draw_in_game() -> void:
 		mesh.clear_surfaces()
 		if secondary_node.get_parent() is VRMTopLevel && secondary_node.get_parent().gizmo_spring_bone:
 			draw_spring_bones(secondary_node.get_parent().gizmo_spring_bone_color)
 			draw_collider_groups()
-		
+
 	func draw_spring_bones(color: Color) -> void:
 		set_material_override(m)
 		# Spring bones
@@ -134,9 +126,11 @@ class SecondaryGizmo:
 				var s_sk: Skeleton3D = spring_bone.skel
 				if Engine.is_editor_hint():
 					s_sk = secondary_node.get_node_or_null(spring_bone.skeleton)
-					s_tr = s_sk.get_bone_global_pose(v.bone_idx)
+					s_tr = s_sk.get_bone_local_pose_override(v.bone_idx)
+					s_tr = s_sk.local_pose_to_global_pose(v.bone_idx, s_tr)
 				else:
-					s_tr = spring_bone.skel.get_bone_global_pose_no_override(v.bone_idx)
+					s_tr = spring_bone.skel.get_bone_local_pose_override(v.bone_idx)
+					s_tr = spring_bone.skel.local_pose_to_global_pose(v.bone_idx, s_tr)
 				draw_line(
 					s_tr.origin,
 					VRMTopLevel.VRMUtil.inv_transform_point(s_sk.global_transform, v.current_tail),
@@ -149,8 +143,10 @@ class SecondaryGizmo:
 				var s_sk: Skeleton3D = spring_bone.skel
 				if Engine.is_editor_hint():
 					s_sk = secondary_node.get_node_or_null(spring_bone.skeleton)
-					s_tr = s_sk.get_bone_global_pose(v.bone_idx)
+					s_tr = s_sk.get_bone_local_pose(v.bone_idx)
+					s_tr = s_sk.local_pose_to_global_pose(v.bone_idx, s_tr)
 				else:
+					s_tr = spring_bone.skel.get_bone_local_pose(v.bone_idx)
 					s_tr = spring_bone.skel.get_bone_global_pose_no_override(v.bone_idx)
 				draw_sphere(
 					s_tr.basis,
@@ -168,20 +164,21 @@ class SecondaryGizmo:
 			if Engine.is_editor_hint():
 				var c_sk: Node = secondary_node.get_node_or_null(collider_group.skeleton_or_node)
 				if c_sk is Skeleton3D:
-					c_tr = c_sk.get_bone_global_pose(c_sk.find_bone(collider_group.bone))
+					c_tr = c_sk.get_bone_local_pose(c_sk.find_bone(collider_group.bone))
+					c_tr = c_sk.local_pose_to_global_pose(c_sk.find_bone(collider_group.bone), c_tr)
 			elif collider_group.parent is Skeleton3D:
 				c_tr = collider_group.skel.get_bone_global_pose_no_override(collider_group.parent.find_bone(collider_group.bone))
 			for collider in collider_group.sphere_colliders:
 				var c_ps: Vector3 = VRMTopLevel.VRMUtil.coordinate_u2g(collider.normal)
 				draw_sphere(c_tr.basis, VRMTopLevel.VRMUtil.transform_point(c_tr, c_ps), collider.d, collider_group.gizmo_color)
 			mesh.surface_end()
-	
+
 	func draw_line(begin_pos: Vector3, end_pos: Vector3, color: Color) -> void:
 		mesh.surface_set_color(color)
 		mesh.surface_add_vertex(begin_pos)
 		mesh.surface_set_color(color)
 		mesh.surface_add_vertex(end_pos)
-	
+
 	func draw_sphere(bas: Basis, center: Vector3, radius: float, color: Color) -> void:
 		var step: int = 15
 		var sppi: float = 2 * PI / step
