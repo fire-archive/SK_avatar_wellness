@@ -1,7 +1,7 @@
 [core]
     autostage = true
     analytics = true
-    remote = chibifire-dvc
+    remote = chibifire-dvc-web
 [cache]
     dir = ../../dvc-cache
 ['remote "chibifire-dvc-web"']
