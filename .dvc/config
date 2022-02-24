@@ -1,6 +1,6 @@
 [core]
     autostage = true
     analytics = true
-    remote = chibifire-dvc-web
+    remote = chibifire-dvc
 ['remote "chibifire-dvc-web"']
     url = https://chibifire.sfo3.digitaloceanspaces.com/dvc/
