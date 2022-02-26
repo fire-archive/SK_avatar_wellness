@@ -23,7 +23,7 @@
 @tool
 extends EditorSceneFormatImporter
 
-const settings_blender_path = "filesystem/import/blend/blender_path"
+const settings_blender_path = "filesystem/import/blender/blender_path"
 
 var blender_path : String
 
@@ -116,7 +116,7 @@ func _add_all_glb_nodes_to_skin(path):
 	f.store_buffer(rest_data)
 	f.close()
 
-func _import_scene(path: String, flags: int, bake_fps: int):
+func _import_scene(path: String, flags: int, options: Dictionary, bake_fps: int):
 	var import_config_file = ConfigFile.new()
 	import_config_file.load(path + ".import")
 	var compression_flags: int = import_config_file.get_value("params", "meshes/compress", 0)
@@ -124,13 +124,12 @@ func _import_scene(path: String, flags: int, bake_fps: int):
 	compression_flags = compression_flags << (RenderingServer.ARRAY_INDEX + 1)
 	if import_config_file.get_value("params", "meshes/octahedral_compression", false):
 		compression_flags |= RenderingServer.ARRAY_FLAG_USE_OCTAHEDRAL_COMPRESSION
-
 	var path_global : String = ProjectSettings.globalize_path(path)
 	path_global = path_global.c_escape()
 	var output_path : String = "res://.godot/imported/" + path.get_file().get_basename() + "-" + path.md5_text() + ".glb"
 	var output_path_global = ProjectSettings.globalize_path(output_path)
 	output_path_global = output_path_global.c_escape()
-	var stdout = [].duplicate()
+	var stdout : Array[String]
 	var addon_path : String = blender_path
 	var addon_path_global = ProjectSettings.globalize_path(addon_path)
 	var script : String = ("import bpy, os, sys;" +
@@ -154,15 +153,17 @@ func _import_scene(path: String, flags: int, bake_fps: int):
 	var ret = OS.execute(addon_path_global, args, stdout, true)
 	for line in stdout:
 		print(line)
-	if ret != 0:
+	if ret != OK:
 		print("Blender returned " + str(ret))
 		return null
-
 	_add_all_glb_nodes_to_skin(output_path)
 	var gstate : GLTFState = GLTFState.new()
 	var gltf : GLTFDocument = GLTFDocument.new()
-	var root_node : Node = gltf.import_scene(output_path, flags, bake_fps, gstate)
+	var err = gltf.append_from_file(output_path, gstate, flags)
+	if err != OK:
+		print(err)
+		return null
+	var root_node : Node = gltf.generate_scene(gstate)
 	root_node.name = path.get_basename().get_file()
 	return root_node
-
-
+	

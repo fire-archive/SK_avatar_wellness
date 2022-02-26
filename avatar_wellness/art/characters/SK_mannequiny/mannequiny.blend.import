@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://575tokmby8hh"
-valid=false
+path="res://.godot/imported/mannequiny.blend-0e011a14d346a5844587735c6f16b97b.scn"
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/mannequiny/mannequiny.blend"
+source_file="res://avatar_wellness/art/characters/SK_mannequiny/mannequiny.blend"
+dest_files=["res://.godot/imported/mannequiny.blend-0e011a14d346a5844587735c6f16b97b.scn"]
 
 [params]
 
