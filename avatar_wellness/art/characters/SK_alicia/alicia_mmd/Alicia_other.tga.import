@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://b57s4n80gk667"
-path.s3tc="res://.godot/imported/Alicia_other.tga-f362d6b00bee0c2f658c34dc3bfaa86e.s3tc.stex"
-path.etc2="res://.godot/imported/Alicia_other.tga-f362d6b00bee0c2f658c34dc3bfaa86e.etc2.stex"
+path.s3tc="res://.godot/imported/Alicia_other.tga-82ee007d612217731e514bd71977a03c.s3tc.stex"
+path.etc2="res://.godot/imported/Alicia_other.tga-82ee007d612217731e514bd71977a03c.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/Alicia_other.tga"
-dest_files=["res://.godot/imported/Alicia_other.tga-f362d6b00bee0c2f658c34dc3bfaa86e.s3tc.stex", "res://.godot/imported/Alicia_other.tga-f362d6b00bee0c2f658c34dc3bfaa86e.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/Alicia_other.tga"
+dest_files=["res://.godot/imported/Alicia_other.tga-82ee007d612217731e514bd71977a03c.s3tc.stex", "res://.godot/imported/Alicia_other.tga-82ee007d612217731e514bd71977a03c.etc2.stex"]
 
 [params]
 

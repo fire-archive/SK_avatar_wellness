@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://b84oifcaebwhk"
-path.s3tc="res://.godot/imported/shoes_s.bmp-e7a6c486ea2cff7ef814f028fa8a2f60.s3tc.stex"
-path.etc2="res://.godot/imported/shoes_s.bmp-e7a6c486ea2cff7ef814f028fa8a2f60.etc2.stex"
+path.s3tc="res://.godot/imported/shoes_s.bmp-29e0b9d7e925c176b8933538452edd3a.s3tc.stex"
+path.etc2="res://.godot/imported/shoes_s.bmp-29e0b9d7e925c176b8933538452edd3a.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/shoes_s.bmp"
-dest_files=["res://.godot/imported/shoes_s.bmp-e7a6c486ea2cff7ef814f028fa8a2f60.s3tc.stex", "res://.godot/imported/shoes_s.bmp-e7a6c486ea2cff7ef814f028fa8a2f60.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/shoes_s.bmp"
+dest_files=["res://.godot/imported/shoes_s.bmp-29e0b9d7e925c176b8933538452edd3a.s3tc.stex", "res://.godot/imported/shoes_s.bmp-29e0b9d7e925c176b8933538452edd3a.etc2.stex"]
 
 [params]
 

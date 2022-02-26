@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://mwimmu76wrb7"
-path.s3tc="res://.godot/imported/skin_s.bmp-eec869bca73846346692203328255290.s3tc.stex"
-path.etc2="res://.godot/imported/skin_s.bmp-eec869bca73846346692203328255290.etc2.stex"
+path.s3tc="res://.godot/imported/skin_s.bmp-5044f65f1038a12c4f0dcfdc369873f4.s3tc.stex"
+path.etc2="res://.godot/imported/skin_s.bmp-5044f65f1038a12c4f0dcfdc369873f4.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/skin_s.bmp"
-dest_files=["res://.godot/imported/skin_s.bmp-eec869bca73846346692203328255290.s3tc.stex", "res://.godot/imported/skin_s.bmp-eec869bca73846346692203328255290.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/skin_s.bmp"
+dest_files=["res://.godot/imported/skin_s.bmp-5044f65f1038a12c4f0dcfdc369873f4.s3tc.stex", "res://.godot/imported/skin_s.bmp-5044f65f1038a12c4f0dcfdc369873f4.etc2.stex"]
 
 [params]
 

@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://c88b6lyp1kyv5"
-path.s3tc="res://.godot/imported/ramp_s.bmp-445bd0ee731ec3cff77f4a4f95c1d5ee.s3tc.stex"
-path.etc2="res://.godot/imported/ramp_s.bmp-445bd0ee731ec3cff77f4a4f95c1d5ee.etc2.stex"
+path.s3tc="res://.godot/imported/ramp_s.bmp-6c537d213cc036c9827cb8b1445a4e3c.s3tc.stex"
+path.etc2="res://.godot/imported/ramp_s.bmp-6c537d213cc036c9827cb8b1445a4e3c.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/ramp_s.bmp"
-dest_files=["res://.godot/imported/ramp_s.bmp-445bd0ee731ec3cff77f4a4f95c1d5ee.s3tc.stex", "res://.godot/imported/ramp_s.bmp-445bd0ee731ec3cff77f4a4f95c1d5ee.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/ramp_s.bmp"
+dest_files=["res://.godot/imported/ramp_s.bmp-6c537d213cc036c9827cb8b1445a4e3c.s3tc.stex", "res://.godot/imported/ramp_s.bmp-6c537d213cc036c9827cb8b1445a4e3c.etc2.stex"]
 
 [params]
 

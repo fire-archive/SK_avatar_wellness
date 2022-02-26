@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://dn5sskh6cdx7x"
-path.s3tc="res://.godot/imported/rod_s.bmp-95df538bb504dc83fbe1132b4426678b.s3tc.stex"
-path.etc2="res://.godot/imported/rod_s.bmp-95df538bb504dc83fbe1132b4426678b.etc2.stex"
+path.s3tc="res://.godot/imported/rod_s.bmp-0b78c4cba183b9b3095f97e1b75b3c7c.s3tc.stex"
+path.etc2="res://.godot/imported/rod_s.bmp-0b78c4cba183b9b3095f97e1b75b3c7c.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/rod_s.bmp"
-dest_files=["res://.godot/imported/rod_s.bmp-95df538bb504dc83fbe1132b4426678b.s3tc.stex", "res://.godot/imported/rod_s.bmp-95df538bb504dc83fbe1132b4426678b.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/rod_s.bmp"
+dest_files=["res://.godot/imported/rod_s.bmp-0b78c4cba183b9b3095f97e1b75b3c7c.s3tc.stex", "res://.godot/imported/rod_s.bmp-0b78c4cba183b9b3095f97e1b75b3c7c.etc2.stex"]
 
 [params]
 

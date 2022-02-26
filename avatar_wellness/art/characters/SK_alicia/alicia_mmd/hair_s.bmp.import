@@ -3,8 +3,8 @@
 importer="texture"
 type="StreamTexture2D"
 uid="uid://pl61tmg78n23"
-path.s3tc="res://.godot/imported/hair_s.bmp-7c0b83aa2788c4fbdbe39ed88faeda2b.s3tc.stex"
-path.etc2="res://.godot/imported/hair_s.bmp-7c0b83aa2788c4fbdbe39ed88faeda2b.etc2.stex"
+path.s3tc="res://.godot/imported/hair_s.bmp-0df5a5dd4df4058f20244a6ccb803d54.s3tc.stex"
+path.etc2="res://.godot/imported/hair_s.bmp-0df5a5dd4df4058f20244a6ccb803d54.etc2.stex"
 metadata={
 "imported_formats": ["bptc", "s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://avatar_wellness/art/characters/alicia/alicia_mmd/hair_s.bmp"
-dest_files=["res://.godot/imported/hair_s.bmp-7c0b83aa2788c4fbdbe39ed88faeda2b.s3tc.stex", "res://.godot/imported/hair_s.bmp-7c0b83aa2788c4fbdbe39ed88faeda2b.etc2.stex"]
+source_file="res://avatar_wellness/art/characters/SK_alicia/alicia_mmd/hair_s.bmp"
+dest_files=["res://.godot/imported/hair_s.bmp-0df5a5dd4df4058f20244a6ccb803d54.s3tc.stex", "res://.godot/imported/hair_s.bmp-0df5a5dd4df4058f20244a6ccb803d54.etc2.stex"]
 
 [params]
 
